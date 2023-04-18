@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="compilerconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="wwwroot\css\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="compilerconfig.json" />
+    <None Include="Views\Contact\Index.cshtml" />
+    <None Include="Views\Partials\_BestCollection.cshtml" />
+    <None Include="Views\Partials\_Breadcrumb.cshtml" />
+    <None Include="Views\Partials\_ContactForm.cshtml" />
+    <None Include="Views\Partials\_Footer.cshtml" />
+    <None Include="Views\Partials\_GoogleMaps.cshtml" />
+    <None Include="Views\Partials\_Header.cshtml" />
+    <None Include="Views\Partials\_Newsletter.cshtml" />
+    <None Include="Views\Partials\_Showcase.cshtml" />
+    <None Include="Views\Partials\_TopSelling.cshtml" />
+    <None Include="Views\Partials\_UpToSell.cshtml" />
+    <None Include="Views\Products\Index.cshtml" />
+    <None Include="Views\Products\Search.cshtml" />
+    <None Include="wwwroot\js\site.js" />
+  </ItemGroup>
+
+</Project>
