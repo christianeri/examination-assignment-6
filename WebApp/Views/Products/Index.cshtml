@@ -1,5 +1,5 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model ProductsIndexViewModel
+
+<div class="pt-5 container">
+    <partial name="/Views/Partials/_GridCollection.cshtml" model="@Model.All"/>
+</div>
