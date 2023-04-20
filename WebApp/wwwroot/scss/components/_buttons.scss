@@ -1,22 +1,24 @@
 .btn-toggle {
+    cursor: pointer;
     font-family: $font-poppins;
     font-size: 1.8em;
     padding: 0 !important;
     background-color: transparent;
     border: none !important;
-    
+
     &:hover {
         color: $color-dark-1 !important;
         background-color: transparent !important;
     }
 }
 .btn-toggle-white {
+    cursor: pointer;
     font-family: $font-poppins;
     font-size: 1.8em;
     padding: 0 !important;
     background-color: transparent;
     border: none !important;
-    
+
     &:hover {
         color: $color-dark-3 !important;
         background-color: transparent !important;
@@ -24,6 +26,7 @@
 }
 
 .btn-outline-white {
+    cursor: pointer;
     font-family: $font-poppins;
     padding: 10px 25px;
     border: 1px solid $color-dark-3;
@@ -39,6 +42,7 @@
 }
 
 .btn-outline-dark {
+    cursor: pointer;
     font-family: $font-poppins;
     padding: 10px 25px;
     border: 0px solid $color-white;
@@ -54,11 +58,13 @@
 }
 
 .btn-theme {
+    cursor: pointer;
     font-family: $font-poppins;
     padding: 10px 35px;
     border: 1px solid $color-theme-1;
     background-color: $color-theme-1;
     color: $color-white;
+    text-decoration: none;
     transition: all 0.25s ease-in-out;
 
     &:hover {

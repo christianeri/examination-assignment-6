@@ -11,14 +11,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="wwwroot\css\" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="compilerconfig.json" />
     <None Include="Views\Contact\Index.cshtml" />
-    <None Include="Views\Partials\_BestCollection.cshtml" />
+    <None Include="Views\Partials\_GridCollection.cshtml" />
     <None Include="Views\Partials\_Breadcrumb.cshtml" />
     <None Include="Views\Partials\_ContactForm.cshtml" />
     <None Include="Views\Partials\_Footer.cshtml" />
