@@ -1,8 +1,13 @@
 ﻿@model RegisterContactViewModel
+@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<partial name="/Views/Partials/_Breadcrumb.cshtml" />
+
 
 <section class="contact-form">
     <div class="container">
-
             <form method="post" novalidate>
 
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -37,7 +42,7 @@
                     -->
                     <span asp-validation-for="Phone" class="text-danger" rows="4"></span></small>
                 </div>
-            
+
                 <div class="organizationName form-group">
                     <label asp-for="Organization" class="form-label"></label>
                     <input asp-for="Organization" class="form-control" />
@@ -47,7 +52,7 @@
                     -->
                     <span asp-validation-for="Organization" class="text-danger" rows="4"></span></small>
                 </div>
-            
+
                 <div class="message form-group">
                     <label asp-for="Message" class="form-label"></label>
                     <textarea asp-for="Message" class="form-control"></textarea>
@@ -56,7 +61,7 @@
                     <textarea id="message" class="invalid"></textarea>
                     <span class="error">Message is required</span>
                     -->
-                    <span asp-validation-for="Message" class="text-danger" rows="4"></span></small>
+                    <span asp-validation-for="Message" class="error"></span></small>
                 </div>
 
                 <!--
@@ -70,11 +75,12 @@
                 -->
 
 
-                <button class="btn btn-theme">Submit</button>
+                <button class="btn-theme">Submit</button>
 
 
             </form>
-
-
     </div>
 </section>
+
+
+<partial name="/Views/Partials/_GoogleMaps.cshtml" />
