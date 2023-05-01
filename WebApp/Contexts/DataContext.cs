@@ -9,6 +9,7 @@ namespace WebApp.Contexts
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         public DbSet<ContactEntity> Contacts { get; set; }
+        public DbSet<ProductEntity> Products { get; set; }
     }
 
 

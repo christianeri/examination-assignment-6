@@ -12,8 +12,9 @@ builder.Services.AddDbContext<DataContext>(x =>
 
 
 
-builder.Services.AddScoped<ContactService>();
 builder.Services.AddScoped<ShowcaseService>();
+builder.Services.AddScoped<ContactService>();
+builder.Services.AddScoped<ProductService>();
 
 
 

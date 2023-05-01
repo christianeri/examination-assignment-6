@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "MANAGE PRODUCTS";
+    ViewData["Page"] = "Products";
+    ViewData["Function"] = "Manage";
+}
+
+<partial name="/Views/Partials/_Breadcrumb.cshtml" />
+
+<div class="container d-flex justify-content-center">
+    <nav id="menu" class="menu-links">
+        <a class="link" asp-controller="products" asp-action="register">Register</a>
+        <a class="link" asp-controller="products" asp-action="edit">Edit</a>
+        <a class="link" asp-controller="products" asp-action="deletet">Delete</a>
+    </nav>
+</div>

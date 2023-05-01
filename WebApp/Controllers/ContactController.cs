@@ -32,11 +32,11 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterContactViewModel productRegistrationViewModel)
+        public async Task<IActionResult> Register(RegisterContactViewModel registerProductViewModel)
         {
             if (ModelState.IsValid)
             {
-                if (await _contactService.RegisterContactAsync(productRegistrationViewModel))
+                if (await _contactService.RegisterContactAsync(registerProductViewModel))
                     return RedirectToAction("Index", "Contact");
 
                 ModelState.AddModelError("", "Something went wrong when submitting your message");
