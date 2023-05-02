@@ -1,0 +1,73 @@
+﻿using System.ComponentModel.DataAnnotations;
+using WebApp.Models.Identity;
+
+namespace WebApp.ViewModels
+{
+    public class SignUpViewModel
+    {
+        [Display(Name = "First name")]
+        [Required(ErrorMessage = "First name is required")]
+        [RegularExpression(@"^[a-öA-Ö]+(?:[é'-][a-öA-Ö]+)*$", ErrorMessage = "You must enter a valid first name")]
+        public string FirstName { get; set; } = null!;
+
+
+        [Display(Name = "Last name")]
+        [Required(ErrorMessage = "Last name is required")]
+        [RegularExpression(@"^[a-öA-Ö]+(?:[é'-][a-öA-Ö]+)*$", ErrorMessage = "You must enter a valid last name")]
+        public string LastName { get; set; } = null!;
+
+
+        [Display(Name = "E-mail address")]
+        [Required(ErrorMessage = "E-mail address is required")]
+        [RegularExpression(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", ErrorMessage = "You must enter a valid email address")]
+        public string Email { get; set; } = null!;
+
+
+        [Display(Name = "Phone number")]
+        public string? PhoneNumber { get; set; }
+
+
+        [Display(Name = "Password")]
+        [DataType(DataType.Password)]
+        [Required(ErrorMessage = "Password is required")]
+        [RegularExpression(@"^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^a-zA-Z0-9]).{8,}$", ErrorMessage = "Password must be at least 8 characters, must contain an upper case letter, a lower case letter and a number")]
+        public string Password { get; set; } = null!;
+
+
+        [Display(Name = "Confirm password")]
+        [DataType(DataType.Password)]
+        [Required(ErrorMessage = "Confirming password is required")]
+        [Compare(nameof(Password), ErrorMessage = "Passwords do not match")]
+        public string ConfirmPassword { get; set; } = null!;
+
+
+        [Display(Name = "Street")]
+        public string? StreetName { get; set; }
+
+
+        [Display(Name = "Postal Code")]
+        public string? PostalCode { get; set; }
+
+
+        [Display(Name = "City")]
+        public string? City { get; set; }
+
+
+
+
+
+        public static implicit operator CustomIdentityUser(SignUpViewModel signupViewModel)
+        {
+            return new CustomIdentityUser
+            {
+                UserName = signupViewModel.Email,
+
+                FirstName = signupViewModel.FirstName,
+                LastName = signupViewModel.LastName,
+                Email = signupViewModel.Email,
+                PhoneNumber = signupViewModel.PhoneNumber
+            };
+        }
+
+    }
+}

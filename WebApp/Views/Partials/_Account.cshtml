@@ -1,0 +1,16 @@
+﻿@if(signInManager.IsSignedIn(User))
+{
+    <nav class="menu-icons">
+        <span class="me-4">@User.Identity?.Name</span>
+        <a class="link" asp-controller="singout" asp-action="index">Log Out</a>
+    </nav>
+}
+else
+{
+    <nav class="menu-icons">
+        <a class="link" asp-controller="signup" asp-action="index">SignUp</a>
+        <a class="link" asp-controller="signin" asp-action="index">SignIn</a>
+    </nav>
+}
+
+

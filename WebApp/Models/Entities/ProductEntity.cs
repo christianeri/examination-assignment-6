@@ -6,7 +6,9 @@ namespace WebApp.Models.Entities
     public class ProductEntity
     {
         public int Id { get; set; }
-        
+
+        public string ImageUrl { get; set; } = null!;
+
         public string Category { get; set; } = null!;
 
         public string Name { get; set; } = null!;
@@ -25,6 +27,7 @@ namespace WebApp.Models.Entities
             return new ProductModel
             {
                 Id = entity?.Id,
+                ImageUrl = entity?.ImageUrl,
                 Category = entity?.Category,
                 Name = entity?.Name,
                 Description = entity?.Description,

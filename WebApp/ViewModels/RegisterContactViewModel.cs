@@ -15,7 +15,7 @@ namespace WebApp.ViewModels
         
         
         [Display(Name = "Phone Number")]
-        public string? Phone { get; set; }        
+        public string? PhoneNumber { get; set; }        
         
 
         [Display(Name = "Organization")]
@@ -34,7 +34,7 @@ namespace WebApp.ViewModels
             {
                 Name = registerContactViewModel.Name,
                 Email = registerContactViewModel.Email,
-                Phone = registerContactViewModel.Phone,
+                PhoneNumber = registerContactViewModel.PhoneNumber,
                 Organization = registerContactViewModel.Organization,
                 Message = registerContactViewModel.Message
             };
