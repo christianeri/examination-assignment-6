@@ -5,6 +5,31 @@ html, body {
     color: $color-dark-3;
 }
 
+.form-theme {
+    padding: 40px 0 50px 0;
+
+    @include lg {
+        padding: 40px 0 50px 0;
+    }
+
+    .container {
+        border: 0px solid $color-dark-5;
+        padding: 30px;
+
+        @include md {
+            border: 1px solid $color-dark-5;
+        }
+    }
+
+    .title {
+        margin-bottom: 40px;
+    }
+}
+
+.header-margin {
+    margin-top: 80px;
+}
+
 .open-menu {
     width: 100vw !important;
     opacity: 0.99;

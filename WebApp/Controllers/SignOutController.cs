@@ -1,31 +1,30 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebApp.Models.Identity;
+using WebApp.Services;
 
 namespace WebApp.Controllers
 {
     public class SignOutController : Controller
     {
 
-        private readonly SignInManager<CustomIdentityUser> _signInManager;
-        public SignOutController(SignInManager<CustomIdentityUser> signInManager)
+        private readonly AuthService _authService;
+        public SignOutController(AuthService authService)
         {
-            _signInManager = signInManager;
+            _authService = authService;
         }
 
 
 
 
-
+        [Authorize]
         public async Task<IActionResult> Index()
         {
-            if(_signInManager.IsSignedIn(User))
-            {
-                await _signInManager.SignOutAsync();
-                return RedirectToAction("Index", "Home");
-            }
+            if (await _authService.SignOutAsync(User))
+                    return LocalRedirect("/");
 
-            return RedirectToAction("Index", "SignIn");
+            return RedirectToAction("Index", "Home");
         }
     }
 }

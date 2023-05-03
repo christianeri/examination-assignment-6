@@ -1,29 +1,31 @@
-﻿using System.ComponentModel.DataAnnotations;
-using WebApp.Models.Identity;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
+using WebApp.Models.Entities;
 
 namespace WebApp.ViewModels
 {
     public class SignUpViewModel
     {
-        [Display(Name = "First name")]
+        [Display(Name = "First Name")]
         [Required(ErrorMessage = "First name is required")]
         [RegularExpression(@"^[a-öA-Ö]+(?:[é'-][a-öA-Ö]+)*$", ErrorMessage = "You must enter a valid first name")]
         public string FirstName { get; set; } = null!;
 
 
-        [Display(Name = "Last name")]
+        [Display(Name = "Last Name")]
         [Required(ErrorMessage = "Last name is required")]
         [RegularExpression(@"^[a-öA-Ö]+(?:[é'-][a-öA-Ö]+)*$", ErrorMessage = "You must enter a valid last name")]
         public string LastName { get; set; } = null!;
 
 
-        [Display(Name = "E-mail address")]
+        [Display(Name = "E-mail Address")]
+        [DataType(DataType.EmailAddress)]
         [Required(ErrorMessage = "E-mail address is required")]
         [RegularExpression(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", ErrorMessage = "You must enter a valid email address")]
         public string Email { get; set; } = null!;
 
 
-        [Display(Name = "Phone number")]
+        [Display(Name = "Phone Number (optional)")]
         public string? PhoneNumber { get; set; }
 
 
@@ -41,33 +43,50 @@ namespace WebApp.ViewModels
         public string ConfirmPassword { get; set; } = null!;
 
 
-        [Display(Name = "Street")]
+        [Display(Name = "Street (optional)")]
         public string? StreetName { get; set; }
 
 
-        [Display(Name = "Postal Code")]
+        [Display(Name = "Postal Code (optional)")]
         public string? PostalCode { get; set; }
 
 
-        [Display(Name = "City")]
+        [Display(Name = "City (optional)")]
         public string? City { get; set; }
 
 
 
 
 
-        public static implicit operator CustomIdentityUser(SignUpViewModel signupViewModel)
+        //public static implicit operator CustomIdentityUser(SignUpViewModel signupViewModel)
+        public static implicit operator IdentityUser(SignUpViewModel model)
         {
-            return new CustomIdentityUser
+            //return new CustomIdentityUser
+            return new IdentityUser
             {
-                UserName = signupViewModel.Email,
+                UserName = model.Email,
 
-                FirstName = signupViewModel.FirstName,
-                LastName = signupViewModel.LastName,
-                Email = signupViewModel.Email,
-                PhoneNumber = signupViewModel.PhoneNumber
+                //FirstName = model.FirstName,
+                //LastName = model.LastName,
+                Email = model.Email,
+                PhoneNumber = model.PhoneNumber
             };
         }
 
+
+
+
+
+        public static implicit operator UserProfileEntity(SignUpViewModel model)
+        {
+            return new UserProfileEntity
+            {
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                StreetName = model.StreetName,
+                PostalCode = model.PostalCode,
+                City = model.City
+            };
+        }
     }
 }

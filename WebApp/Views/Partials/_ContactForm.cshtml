@@ -1,4 +1,9 @@
 ﻿@model RegisterContactViewModel
+@{ 
+    ViewData["Title"] = "MANAGE PRODUCTS";
+    ViewData["Page"] = "Products";
+    ViewData["Function"] = "Manage";
+}
 
 <section class="contact-form">
     <div class="container">
@@ -10,65 +15,32 @@
                 <div class="name form-group">
                     <label asp-for="Name" class="form-label"></label>
                     <input asp-for="Name" class="form-control" />
-                    <!--
-                    <input id="Name" type="text" class="invalid" required>
-                    <span class="error">Your name is required</span>
-                    -->
                     <span asp-validation-for="Name" class="text-danger" rows="4"></span></small>
                 </div>
 
                 <div class="email form-group">
                     <label asp-for="Email" class="form-label"></label>
                     <input asp-for="Email" class="form-control" />
-                    <!--
-                    <label for="Email">Your Email*</label>
-                    <input id="Email" type="text" class="invalid">
-                    <span class="error">Your email is required</span>
-                    -->
                     <span asp-validation-for="Email" class="text-danger" rows="4"></span></small>
                 </div>
 
                 <div class="phoneNumber form-group">
                     <label asp-for="PhoneNumber" class="form-label"></label>
                     <input asp-for="PhoneNumber" class="form-control" />
-                    <!--
-                    <label for="PhoneNumber">PhoneNumber Number (optional)</label>
-                    <input id="PhoneNumber" type="text">
-                    -->
                     <span asp-validation-for="PhoneNumber" class="text-danger" rows="4"></span></small>
                 </div>
             
                 <div class="organizationName form-group">
                     <label asp-for="Organization" class="form-label"></label>
                     <input asp-for="Organization" class="form-control" />
-                    <!--
-                    <label for="organization">Organization (optional)</label>
-                    <input id="organization" type="text">
-                    -->
                     <span asp-validation-for="Organization" class="text-danger" rows="4"></span></small>
                 </div>
             
                 <div class="message form-group">
                     <label asp-for="Message" class="form-label"></label>
                     <textarea asp-for="Message" class="form-control"></textarea>
-                    <!--
-                    <label for="message">Message*</label>
-                    <textarea id="message" class="invalid"></textarea>
-                    <span class="error">Message is required</span>
-                    -->
                     <span asp-validation-for="Message" class="text-danger" rows="4"></span></small>
                 </div>
-
-                <!--
-                <div class="terms form-checkbox-group">
-                    <label class="custom-checkbox">
-                        Save my name, email in the this browser for the next time I comment.
-                        <input type="checkbox" checked="checked">
-                        <span class="checkmark"></span>
-                    </label>
-                </div>
-                -->
-
 
                 <button class="btn btn-theme">Submit</button>
 

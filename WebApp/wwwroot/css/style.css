@@ -8,6 +8,31 @@ html, body {
   color: #636363;
 }
 
+.form-theme {
+  padding: 40px 0 50px 0;
+}
+@media (min-width: 992px) {
+  .form-theme {
+    padding: 40px 0 50px 0;
+  }
+}
+.form-theme .container {
+  border: 0px solid #E1E1E1;
+  padding: 30px;
+}
+@media (min-width: 768px) {
+  .form-theme .container {
+    border: 1px solid #E1E1E1;
+  }
+}
+.form-theme .title {
+  margin-bottom: 40px;
+}
+
+.header-margin {
+  margin-top: 80px;
+}
+
 .open-menu {
   width: 100vw !important;
   opacity: 0.99;
@@ -323,66 +348,45 @@ html, body {
 }
 
 .contact-form {
-  padding: 20px 0 60px 0;
+  display: grid;
+  column-gap: 30px;
+  grid-template-columns: 1fr;
+  grid-template-areas: "name" "email" "phoneNumber" "organizationName" "message" "terms" "button";
 }
 @media (min-width: 992px) {
   .contact-form {
-    padding: 60px 0;
-  }
-}
-.contact-form .container {
-  border: 0px solid #E1E1E1;
-  padding: 30px;
-}
-@media (min-width: 768px) {
-  .contact-form .container {
-    border: 1px solid #E1E1E1;
-  }
-}
-.contact-form .title {
-  margin-bottom: 40px;
-}
-.contact-form form {
-  display: grid;
-  column-gap: 30px;
-  row-gap: 30px;
-  grid-template-columns: 1fr;
-  grid-template-areas: "name" "email" "phoneNumber" "companyName" "message" "terms" "button";
-}
-@media (min-width: 992px) {
-  .contact-form form {
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: "name email" "phoneNumber companyName" "message message" "terms terms" "button button";
+    grid-template-areas: "name email" "phoneNumber organizationName" "message message" "terms terms" "button button";
   }
 }
-.contact-form form .name {
+.contact-form .name {
   grid-area: name;
 }
-.contact-form form .email {
+.contact-form .email {
   grid-area: email;
 }
-.contact-form form .phoneNumber {
+.contact-form .phoneNumber {
   grid-area: phoneNumber;
 }
-.contact-form form .companyName {
-  grid-area: companyName;
+.contact-form .organizationName {
+  grid-area: organizationName;
 }
-.contact-form form .terms {
+.contact-form .terms {
   grid-area: terms;
   margin: 10px 0;
 }
-.contact-form form .message {
+.contact-form .message {
   grid-area: message;
 }
-.contact-form form textarea {
+.contact-form textarea {
   height: 100px;
   resize: none;
 }
-.contact-form form button {
+.contact-form button {
   grid-area: button;
 }
 @media (min-width: 992px) {
-  .contact-form form button {
+  .contact-form button {
     display: flex;
     justify-self: flex-start;
   }
@@ -488,6 +492,7 @@ header {
   background-color: #FFFFFF;
   display: flex;
   padding: 0 20px;
+  margin-bottom: 80px;
 }
 header .container {
   display: flex;
@@ -792,6 +797,84 @@ header .toggle {
   height: auto;
 }
 
+.signin-form {
+  display: grid;
+  column-gap: 30px;
+  grid-template-columns: 1fr;
+  grid-template-areas: "email" "password" "signin";
+}
+.signin-form .email {
+  grid-area: email;
+}
+.signin-form .password {
+  grid-area: password;
+}
+.signin-form .signin {
+  grid-area: signin;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.signin-form .signin .link {
+  font-family: "Poppins", sans-serif;
+  color: #202020;
+  padding-right: 20px;
+  text-decoration: none;
+  font-weight: 500;
+}
+.signin-form .signin .link:hover {
+  color: #FA3150;
+}
+
+.signup-form {
+  display: grid;
+  column-gap: 30px;
+  grid-template-columns: 1fr;
+  grid-template-areas: "firstname" "lastname" "email" "password" "confirmpassword" "street" "postalcode" "city" "button";
+}
+@media (min-width: 992px) {
+  .signup-form {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "firstname lastname" "email email" "password confirmpassword" "street street" "postalcode city" "button button";
+  }
+}
+.signup-form .firstname {
+  grid-area: firstname;
+}
+.signup-form .lastname {
+  grid-area: lastname;
+}
+.signup-form .email {
+  grid-area: email;
+}
+.signup-form .phone {
+  grid-area: phone;
+}
+.signup-form .password {
+  grid-area: password;
+}
+.signup-form .confirmpassword {
+  grid-area: confirmpassword;
+}
+.signup-form .street {
+  grid-area: street;
+}
+.signup-form .postalcode {
+  grid-area: postalcode;
+}
+.signup-form .city {
+  grid-area: city;
+}
+.signup-form button {
+  grid-area: button;
+}
+@media (min-width: 992px) {
+  .signup-form button {
+    display: flex;
+    justify-self: flex-start;
+  }
+}
+
 .top-selling {
   padding: 40px 20px;
 }
@@ -925,4 +1008,8 @@ header .toggle {
   .up-to-sell .collection-grid .collection-content .link {
     margin-top: 50px;
   }
+}
+
+.user-status {
+  min-width: 60px;
 }

@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Page"] = "Home";
+    ViewData["Function"] = "Account";
+
+    if (signInManager.IsSignedIn(User))
+    {
+        ViewData["Title"] = @User.Identity.Name;
+    }
+    else
+    {
+        ViewData["Title"] = "Account";
+    }
+}
+
+<partial name="/Views/Partials/_Breadcrumb.cshtml" />
+

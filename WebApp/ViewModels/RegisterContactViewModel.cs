@@ -18,7 +18,7 @@ namespace WebApp.ViewModels
         public string? PhoneNumber { get; set; }        
         
 
-        [Display(Name = "Organization")]
+        [Display(Name = "Organization (optional)")]
         public string? Organization { get; set; }
 
 

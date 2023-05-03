@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 using WebApp.Models.Entities;
 
 namespace WebApp.Contexts
@@ -10,6 +9,7 @@ namespace WebApp.Contexts
 
         public DbSet<ContactEntity> Contacts { get; set; }
         public DbSet<ProductEntity> Products { get; set; }
+        public DbSet<UserProfileEntity> UserProfiles { get; set; }
     }
 
 

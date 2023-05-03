@@ -9,12 +9,21 @@ namespace WebApp.Controllers
     public class SignUpController : Controller
     {
 
-        private readonly UserManager<CustomIdentityUser> _userManager;
-        public SignUpController(UserManager<CustomIdentityUser> userManager)
-        {
-            _userManager = userManager;
-        }
+        //private readonly UserManager<CustomIdentityUser> _userManager;
+        //public SignUpController(UserManager<CustomIdentityUser> userManager)
+        //{
+        //    _userManager = userManager;
+        //}
 
+
+
+
+
+        private readonly AuthService _authService;
+        public SignUpController(AuthService authService)
+        {
+            _authService = authService;
+        }
 
 
 
@@ -29,33 +38,54 @@ namespace WebApp.Controllers
 
 
 
+        //[HttpGet]
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
+
+
+
+
+
+        //[HttpPost]
+        //public async Task<IActionResult> Index(SignUpViewModel signupViewModel)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+
+        //        if (await _userManager.FindByNameAsync(signupViewModel.Email) == null)
+        //        {
+        //            var result = await _userManager.CreateAsync(signupViewModel, signupViewModel.Password);
+        //            if (result.Succeeded)
+        //                return RedirectToAction("Index", "Account");
+
+
+        //        }
+        //        ModelState.AddModelError("", "A user with that e-mail address already exists");
+        //    }
+        //    return View(signupViewModel);
+        //}
+
+
         [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
 
-
-
-
-
         [HttpPost]
-        public async Task<IActionResult> Index(SignUpViewModel signupViewModel)
+        public async Task<IActionResult> Index(SignUpViewModel model)
         {
             if (ModelState.IsValid)
             {
-
-                if (await _userManager.FindByNameAsync(signupViewModel.Email) == null)
-                {
-                    var result = await _userManager.CreateAsync(signupViewModel, signupViewModel.Password);
-                    if (result.Succeeded)
-                        return RedirectToAction("Index", "Home");
-
-
-                }
+                if (await _authService.SignUpAsync(model))
+                    return RedirectToAction("index", "signin");
+                
                 ModelState.AddModelError("", "A user with that e-mail address already exists");
+
             }
-            return View(signupViewModel);
+            return View(model);
         }
     }
 }

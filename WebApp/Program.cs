@@ -14,23 +14,42 @@ builder.Services.AddControllersWithViews();
 
 
 builder.Services.AddDbContext<DataContext>(x =>
-    x.UseSqlServer(builder.Configuration.GetConnectionString("Sql")));
+    x.UseSqlServer(builder.Configuration.GetConnectionString("ProductSql")));
 
 
-builder.Services.AddDbContext<IdentityContext>(x =>
-    x.UseSqlServer(builder.Configuration.GetConnectionString("IdentitySql")));
-builder.Services.AddIdentity<CustomIdentityUser, IdentityRole>(x =>
+
+builder.Services.AddDbContext<UserContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("UserSql")));
+builder.Services.AddDefaultIdentity<IdentityUser>(x =>
 {
     x.SignIn.RequireConfirmedAccount = false;
     x.User.RequireUniqueEmail = true;
     x.Password.RequiredLength = 8;
-}).AddEntityFrameworkStores<IdentityContext>();
+}).AddEntityFrameworkStores<UserContext>();
 
 
 
 
 
 
+
+
+
+
+
+//builder.Services.AddDbContext<IdentityContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("IdentitySql")));
+//builder.Services.AddIdentity<CustomIdentityUser, IdentityRole>(x =>
+//{
+//    x.SignIn.RequireConfirmedAccount = false;
+//    x.User.RequireUniqueEmail = true;
+//    x.Password.RequiredLength = 8;
+//}).AddEntityFrameworkStores<IdentityContext>();
+
+
+
+
+
+
+builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<ShowcaseService>();
 builder.Services.AddScoped<ContactService>();
 builder.Services.AddScoped<ProductService>();

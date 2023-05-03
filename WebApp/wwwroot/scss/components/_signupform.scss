@@ -1,0 +1,48 @@
+﻿
+.signup-form {
+
+    display: grid;
+    column-gap: 30px;
+    grid-template-columns: 1fr;
+    grid-template-areas: "firstname"
+                         "lastname"
+                         "email"
+                         "password"
+                         "confirmpassword"
+                         "street"
+                         "postalcode"
+                         "city"
+                         "button";
+
+    @include lg {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: "firstname lastname" 
+                             "email email"
+                             "password confirmpassword"
+                             "street street"
+                             "postalcode city"
+                             "button button";
+    }
+
+    .firstname          { grid-area: firstname; }
+    .lastname           { grid-area: lastname; }
+    .email              { grid-area: email; }
+    .phone              { grid-area: phone; }
+    .password           { grid-area: password; }
+    .confirmpassword    { grid-area: confirmpassword; }
+    .street             { grid-area: street; }
+    .postalcode         { grid-area: postalcode; }
+    .city               { grid-area: city; }
+
+    //.terms              { grid-area: terms; margin: 10px 0; }
+    
+
+    button {
+        grid-area: button;
+
+        @include lg {
+            display: flex;
+            justify-self: flex-start;
+        }
+    }
+}

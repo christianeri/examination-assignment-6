@@ -1,34 +1,35 @@
 ﻿@model SignInViewModel
 
-<section class="contact-form">
+@{
+    ViewData["Title"] = "SIGN IN";
+    ViewData["Page"] = "Home";
+    ViewData["Function"] = "Sign In";
+}
+
+<partial name="/Views/Partials/_Breadcrumb.cshtml" />
+
+<section class="form-theme">
     <div class="container">
-
-        <form method="post" novalidate>
-
+        <form class="signin-form" method="post" novalidate>
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <div>
-                <div class="">
-                    <label asp-for="Email" class="form-label"></label>
-                    <input asp-for="Email" class="form-control" />
-
-                    <span asp-validation-for="Email" class="text-danger" rows="4"></span></small>
-                </div>
-
-
-                <div class="">
-                    <label asp-for="Password" class="form-label"></label>
-                    <input asp-for="Password" class="form-control" />
-
-                    <span asp-validation-for="Password" class="text-danger" rows="4"></span></small>
-                </div>
+            <div class="email form-group">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <small class="text-danger"><span asp-validation-for="Email"></span></small>
             </div>
 
+            <div class="password form-group">
+                <label asp-for="Password" class="form-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <small class="text-danger"><span asp-validation-for="Password"></span></small>
+            </div>
 
-            <button class="btn btn-theme">SIGN IN</button>
-
-
+            <div class="signin form-group">
+                <button class="btn-theme">Submit</button>
+                <a class="link" asp-controller="signup" asp-action="index">REGISTER NEW ACCOUNT</a>
+            </div>
         </form>
 
     </div>
