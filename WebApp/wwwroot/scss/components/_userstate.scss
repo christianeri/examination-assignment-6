@@ -1,0 +1,13 @@
+.user-state {
+    font-family: $font-poppins;
+    border-style: solid;
+    border-width: 1px;
+
+    span {
+        color: #ff0000;
+    }
+
+    .link {
+        min-width: 100px;
+    }
+}

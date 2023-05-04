@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.Controllers
 {
-    public class AccountController : Controller
+    public class AdminController : Controller
     {
-
-        [Authorize]
+        //www.youtube.com/watch?v=fQTe81VSxj8 02:55
+        [Authorize(Roles = "admin")]
         public IActionResult Index()
         {
             return View();

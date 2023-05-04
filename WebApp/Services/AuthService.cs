@@ -3,6 +3,7 @@ using WebApp.Models.Entities;
 using WebApp.ViewModels;
 using WebApp.Contexts;
 using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebApp.Services
 {
@@ -11,12 +12,16 @@ namespace WebApp.Services
 
         private readonly UserContext _userContext;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly SignInManager<IdentityUser> _signInManager;
-        public AuthService(UserContext userContext, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        private readonly SeedService _seedService;
+        public AuthService(UserContext userContext, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, SeedService seedService, RoleManager<IdentityRole> roleManager)
         {
             _userContext = userContext;
             _userManager = userManager;
+            _roleManager = roleManager;
             _signInManager = signInManager;
+            _seedService = seedService;
         }
 
 
@@ -27,10 +32,21 @@ namespace WebApp.Services
         {
             try
             {
+                //02:36
+                await _seedService.SeedRoles();
+                var roleName = "user";
+
+
+                //02:40 ff 
+                if (!await _userManager.Users.AnyAsync())
+                    roleName = "admin";
+
+
                 IdentityUser identityUser = model;
-
-
                 await _userManager.CreateAsync(identityUser, model.Password);
+
+
+                await _userManager.AddToRoleAsync(identityUser, roleName);
 
 
                 UserProfileEntity userProfileEntity = model;
