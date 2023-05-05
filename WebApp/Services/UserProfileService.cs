@@ -18,10 +18,10 @@ namespace WebApp.Services
 
 
 
-        public async Task<UserProfileEntity> GetUserProfileAsync(string userId)
+        public async Task<UserEntity> GetUserProfileAsync(string userId)
         {
-            var userProfileEntity = await _userContext.UserProfiles.Include(x => x.User).FirstOrDefaultAsync(x => x.UserId == userId);
-            return userProfileEntity!;
+            var userEntity = await _userContext.AppUsers.Include(x => x.User).FirstOrDefaultAsync(x => x.UserId == userId);
+            return userEntity!;
         }
     }
 }

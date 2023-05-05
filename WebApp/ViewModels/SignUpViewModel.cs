@@ -58,16 +58,12 @@ namespace WebApp.ViewModels
 
 
 
-        //public static implicit operator CustomIdentityUser(SignUpViewModel signupViewModel)
         public static implicit operator IdentityUser(SignUpViewModel model)
         {
-            //return new CustomIdentityUser
+            
             return new IdentityUser
             {
                 UserName = model.Email,
-
-                //FirstName = model.FirstName,
-                //LastName = model.LastName,
                 Email = model.Email,
                 PhoneNumber = model.PhoneNumber
             };
@@ -77,12 +73,23 @@ namespace WebApp.ViewModels
 
 
 
-        public static implicit operator UserProfileEntity(SignUpViewModel model)
+        public static implicit operator UserEntity(SignUpViewModel model)
         {
-            return new UserProfileEntity
+            return new UserEntity
             {
                 FirstName = model.FirstName,
                 LastName = model.LastName,
+            };
+        }        
+        
+        
+        
+        
+        
+        public static implicit operator AddressEntity(SignUpViewModel model)
+        {
+            return new AddressEntity
+            {
                 StreetName = model.StreetName,
                 PostalCode = model.PostalCode,
                 City = model.City

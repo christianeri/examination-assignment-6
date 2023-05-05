@@ -9,7 +9,8 @@ namespace WebApp.Contexts
 
         public DbSet<ContactEntity> Contacts { get; set; }
         public DbSet<ProductEntity> Products { get; set; }
-        public DbSet<UserProfileEntity> UserProfiles { get; set; }
+
+        //public DbSet<UserProfileEntity> UserProfiles { get; set; }
     }
 
 

@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using WebApp.Models.Identity;
 using WebApp.Services;
 using WebApp.ViewModels;
 

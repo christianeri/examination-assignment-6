@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using WebApp.Models.Entities;
 using WebApp.ViewModels;
 using WebApp.Contexts;
 using System.Security.Claims;
@@ -10,18 +9,28 @@ namespace WebApp.Services
     public class AuthService
     {
 
-        private readonly UserContext _userContext;
+        //private readonly UserContext _userContext;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly SeedService _seedService;
-        public AuthService(UserContext userContext, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, SeedService seedService, RoleManager<IdentityRole> roleManager)
+        private readonly AddressService _addressService;
+        public AuthService(UserContext userContext, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, SeedService seedService, RoleManager<IdentityRole> roleManager, AddressService addressService)
         {
-            _userContext = userContext;
+            //_userContext = userContext;
             _userManager = userManager;
             _roleManager = roleManager;
             _signInManager = signInManager;
             _seedService = seedService;
+            _addressService = addressService;
+        }
+
+
+
+        //www.youtube.com/watch?v=yGpybKyQlHo 02:07
+        public async Task<bool> UserExitsAsync(SignUpViewModel model)
+        {
+            return await _userManager.Users.AnyAsync(x => x.Email == model.Email);  
         }
 
 
@@ -30,37 +39,32 @@ namespace WebApp.Services
         //www.youtube.com/watch?v=fQTe81VSxj8 01:10
         public async Task<bool> SignUpAsync(SignUpViewModel model)
         {
-            try
+     
+            //02:36
+            await _seedService.SeedRoles();
+            var roleName = "user";
+            //02:40 ff 
+            if (!await _userManager.Users.AnyAsync())
+                roleName = "admin";
+
+
+
+            IdentityUser identityUser = model;
+            var result = await _userManager.CreateAsync(identityUser, model.Password);
+            if(result.Succeeded)
             {
-                //02:36
-                await _seedService.SeedRoles();
-                var roleName = "user";
-
-
-                //02:40 ff 
-                if (!await _userManager.Users.AnyAsync())
-                    roleName = "admin";
-
-
-                IdentityUser identityUser = model;
-                await _userManager.CreateAsync(identityUser, model.Password);
-
-
                 await _userManager.AddToRoleAsync(identityUser, roleName);
-
-
-                UserProfileEntity userProfileEntity = model;
-                userProfileEntity.UserId = identityUser.Id;
-
-                _userContext.UserProfiles.Add(userProfileEntity);
-                await _userContext.SaveChangesAsync();
+                
+                
+                var addressEntity = await _addressService.GetOrCreateAsync(model);
+                if(addressEntity != null)
+                {
+                    await _addressService.AddAddressAsync(identityUser, addressEntity);
+                }
 
                 return true;
             }
-            catch
-            {
-                return false;
-            }
+            return false;
         }
 
 

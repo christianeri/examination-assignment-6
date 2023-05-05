@@ -26,6 +26,16 @@
                 <small class="text-danger"><span asp-validation-for="Password"></span></small>
             </div>
 
+
+            <!--fix-->
+            <div class="form-checkbox-group">
+                <label asp-for="RememberMe" class="form-label"></label>
+                <input asp-for="RememberMe" class="form-control" />
+                <span class="checkmark"></span>
+            </div>
+            <!---->
+
+
             <div class="signin form-group">
                 <button class="btn-theme">Submit</button>
                 <a class="link" asp-controller="signup" asp-action="index">REGISTER NEW ACCOUNT</a>
