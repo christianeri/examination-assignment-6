@@ -18,8 +18,13 @@ namespace WebApp.Controllers
 
 
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index (string ReturnUrl = null!)
         {
+            var model = new SignInViewModel();
+            if(ReturnUrl != null)
+                return RedirectToAction("Index", "Home");
+                //model.ReturnUrl = ReturnUrl;
+
             return View();
         }
 
@@ -29,7 +34,7 @@ namespace WebApp.Controllers
             if (ModelState.IsValid)
             {
                 if (await _authService.SignInAsync(model))
-                    return RedirectToAction("index", "account");
+                    return LocalRedirect(model.ReturnUrl);
 
                 ModelState.AddModelError("", "Incorrect e-mail address or password");
 

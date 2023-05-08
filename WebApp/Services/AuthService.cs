@@ -53,7 +53,7 @@ namespace WebApp.Services
             var result = await _userManager.CreateAsync(identityUser, model.Password);
             if(result.Succeeded)
             {
-                await _userManager.AddToRoleAsync(identityUser, roleName);
+                //await _userManager.AddToRoleAsync(identityUser, roleName);
                 
                 
                 var addressEntity = await _addressService.GetOrCreateAsync(model);
@@ -74,15 +74,24 @@ namespace WebApp.Services
         //www.youtube.com/watch?v=fQTe81VSxj8 01:33
         public async Task<bool> SignInAsync(SignInViewModel model)
         {
-            try
+            //try
+            //{
+            //    var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+            //    return result.Succeeded;
+            //}
+            //catch
+            //{
+            //    return false;
+            //}
+
+            var appUser = await _userManager.Users.FirstOrDefaultAsync(x => x.Email == model.Email);
+            if(appUser != null)
             {
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
                 return result.Succeeded;
             }
-            catch
-            {
-                return false;
-            }
+            return false;
+
         }
 
 

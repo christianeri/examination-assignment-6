@@ -2,19 +2,21 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WebApp.Contexts;
 using WebApp.Factories;
+using WebApp.Repositories;
 using WebApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
 builder.Services.AddControllersWithViews();
-
 
 builder.Services.AddDbContext<UserContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("UserSql")));
 
+builder.Services.AddScoped<AddressRepository>();
+builder.Services.AddScoped<UserAddressRepository>();
+builder.Services.AddScoped<AddressService>();
+builder.Services.AddScoped<AuthService>();
+
 
 builder.Services.AddScoped<SeedService>();
-builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<UserProfileService>();
 
 
@@ -26,7 +28,12 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(x =>
 
 }).AddEntityFrameworkStores<UserContext>().AddClaimsPrincipalFactory<CustomClaimsPrincipalFactory>();
 
-
+builder.Services.ConfigureApplicationCookie(x =>
+{
+    x.LoginPath = "/login";
+    x.LogoutPath = "/";
+    x.AccessDeniedPath = "/denied";
+});
 
 builder.Services.AddDbContext<DataContext>(x =>
     x.UseSqlServer(builder.Configuration.GetConnectionString("ProductSql")));

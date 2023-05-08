@@ -14,6 +14,9 @@ namespace WebApp.ViewModels
         [Required(ErrorMessage = "Password is required")]
         public string Password { get; set; } = null!;
 
+
+        [Display(Name = "Keep me signed in")]
         public bool RememberMe { get; set; }
+        public string ReturnUrl { get; set; } = "/";
     }
 }
