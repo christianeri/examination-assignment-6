@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 using WebApp.Models.Entities;
+using WebApp.Models.Identity;
 
 namespace WebApp.ViewModels
 {
@@ -53,36 +54,30 @@ namespace WebApp.ViewModels
 
         [Display(Name = "City (optional)")]
         public string? City { get; set; }
+        
+        
+        [Display(Name = "Profile Picture (optional)")]
+        [DataType(DataType.Upload)]
+        public IFormFile? ImageFile { get; set; }
 
 
 
 
 
-        public static implicit operator IdentityUser(SignUpViewModel model)
+        public static implicit operator AppUser(SignUpViewModel model)
         {
             
-            return new IdentityUser
+            return new AppUser
             {
                 UserName = model.Email,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
                 Email = model.Email,
                 PhoneNumber = model.PhoneNumber
             };
         }
 
 
-
-
-
-        public static implicit operator UserEntity(SignUpViewModel model)
-        {
-            return new UserEntity
-            {
-                FirstName = model.FirstName,
-                LastName = model.LastName,
-            };
-        }        
-        
-        
         
         
         

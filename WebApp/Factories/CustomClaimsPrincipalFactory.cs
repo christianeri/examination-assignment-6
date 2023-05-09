@@ -5,23 +5,23 @@ using WebApp.Services;
 
 namespace WebApp.Factories
 {
-    public class CustomClaimsPrincipalFactory : UserClaimsPrincipalFactory<IdentityUser>
-    {
+    //public class CustomClaimsPrincipalFactory : UserClaimsPrincipalFactory<IdentityUser>
+    //{
 
 
-        private readonly UserManager<IdentityUser> _userManager;
-        public CustomClaimsPrincipalFactory(UserManager<IdentityUser> userManager, IOptions<IdentityOptions> optionsAccessor) : base(userManager, optionsAccessor)
-        {
-            _userManager = userManager;
-        }
+    //    private readonly UserManager<AppUser> _userManager;
+    //    public CustomClaimsPrincipalFactory(UserManager<IdentityUser> userManager, IOptions<IdentityOptions> optionsAccessor) : base(userManager, optionsAccessor)
+    //    {
+    //        _userManager = userManager;
+    //    }
 
-        protected override async Task<ClaimsIdentity> GenerateClaimsAsync(IdentityUser user)
-        {
-            var claimsIdentity = await base.GenerateClaimsAsync(user);
-            claimsIdentity.AddClaim(new Claim("DisplayName", $"{user.FirstName} {user.LastName}"))
+    //    protected override async Task<ClaimsIdentity> GenerateClaimsAsync(IdentityUser user)
+    //    {
+    //        var claimsIdentity = await base.GenerateClaimsAsync(user);
+    //        //claimsIdentity.AddClaim(new Claim("DisplayName", $"{user.FirstName} {user.LastName}"));
 
-            return claimsIdentity;
-        }
+    //        return claimsIdentity;
+    //    }
 
 
 
@@ -42,5 +42,5 @@ namespace WebApp.Factories
 
         //    return claimsIdentity;
         //}
-    }
+    //}
 }

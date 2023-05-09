@@ -9,23 +9,23 @@ namespace WebApp.Controllers
     {
 
 
-        private readonly SignInManager<IdentityUser> _signInManager;
-        public SignOutController(SignInManager<IdentityUser> signInManager)
-        {
-            _signInManager = signInManager;
-        }
+        //private readonly SignInManager _signInManager;
+        //public SignOutController(SignInManager signInManager)
+        //{
+        //    _signInManager = signInManager;
+        //}
 
 
 
 
 
-        public async Task<IActionResult> Index()
-        {
-            if (_signInManager.IsSignedIn(User))
-                await _signInManager.SignOutAsync();
+        //public async Task<IActionResult> Index()
+        //{
+        //    if (_signInManager.IsSignedIn(User))
+        //        await _signInManager.SignOutAsync();
 
-            return RedirectToAction("Index", "Home");
-        }
+        //    return RedirectToAction("Index", "Home");
+        //}
 
 
         //private readonly AuthService _authService;

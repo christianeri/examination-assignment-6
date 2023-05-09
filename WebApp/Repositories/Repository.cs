@@ -4,6 +4,7 @@ using WebApp.Contexts;
 
 namespace WebApp.Repositories
 {
+    //www.youtube.com/watch?v=yGpybKyQlHo 02:29
     public abstract class Repository<TEntity> where TEntity : class
     {
 

@@ -7,8 +7,8 @@ namespace WebApp.Controllers
     public class SignInController : Controller
     {
 
-        private readonly AuthService _authService;
-        public SignInController(AuthService authService)
+        private readonly AuthenticationService _authService;
+        public SignInController(AuthenticationService authService)
         {
             _authService = authService;
         }

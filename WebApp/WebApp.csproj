@@ -7,12 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\Entities\UserEntity.cs" />
+    <Compile Remove="Services\UserProfileService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="compilerconfig.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
-    <Folder Include="Models\Identity\" />
     <Folder Include="wwwroot\css\" />
   </ItemGroup>
 

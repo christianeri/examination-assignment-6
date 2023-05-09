@@ -1,12 +1,14 @@
-﻿using Microsoft.AspNetCore.Identity;
-
+﻿
 namespace WebApp.Models.Entities
 {
-    public class AddressEntity: IdentityUser
+    public class AddressEntity
     {
-        public string StreetName { get; set; }
-        public string PostalCode { get; set; }
-        public string City { get; set; }
+        public int Id { get; set; }
+        public string StreetName { get; set; } = null!;
+        public string PostalCode { get; set; } = null!;
+        public string City { get; set; } = null!;
+
+
         public ICollection<UserAddressEntity> Users { get; set; } = new HashSet<UserAddressEntity>();   
     }
 }

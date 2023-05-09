@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WebApp.Contexts;
 using WebApp.Factories;
+using WebApp.Models.Identity;
 using WebApp.Repositories;
 using WebApp.Services;
 
@@ -10,23 +11,26 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<UserContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("UserSql")));
 
+builder.Services.AddScoped<AuthenticationService>();
 builder.Services.AddScoped<AddressRepository>();
 builder.Services.AddScoped<UserAddressRepository>();
 builder.Services.AddScoped<AddressService>();
-builder.Services.AddScoped<AuthService>();
 
 
 builder.Services.AddScoped<SeedService>();
-builder.Services.AddScoped<UserProfileService>();
+//builder.Services.AddScoped<UserProfileService>();
 
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>(x =>
+builder.Services.AddIdentity<AppUser, IdentityRole>(x =>
 {
     x.SignIn.RequireConfirmedAccount = false;
     x.User.RequireUniqueEmail = true;
     x.Password.RequiredLength = 8;
 
-}).AddEntityFrameworkStores<UserContext>().AddClaimsPrincipalFactory<CustomClaimsPrincipalFactory>();
+}).AddEntityFrameworkStores<UserContext>()
+;//.AddClaimsPrincipalFactory<CustomClaimsPrincipalFactory>();
+
+
 
 builder.Services.ConfigureApplicationCookie(x =>
 {

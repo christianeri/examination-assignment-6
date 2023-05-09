@@ -18,6 +18,7 @@ namespace WebApp.Models.Entities
 
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        
         public ICollection<UserAddressEntity> Addresses { get; set; } = new HashSet<UserAddressEntity>();
 
     }

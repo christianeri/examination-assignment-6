@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using WebApp.Services;
 using WebApp.ViewModels;
 
@@ -9,8 +8,8 @@ namespace WebApp.Controllers
     {
 
 
-        private readonly AuthService _authService;
-        public SignUpController(AuthService authService)
+        private readonly AuthenticationService _authService;
+        public SignUpController(AuthenticationService authService)
         {
             _authService = authService;
         }
@@ -30,10 +29,13 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
+                ////www.youtube.com/watch?v=yGpybKyQlHo 02:06
+                if (await _authService.UserExitsAsync(x => x.Email == model.Email))
+                    ModelState.AddModelError("", "A user with that e-mail address already exists");
+ 
+                
                 if (await _authService.SignUpAsync(model))
                     return RedirectToAction("index", "signin");
-                
-                ModelState.AddModelError("", "A user with that e-mail address already exists");
 
             }
             return View(model);

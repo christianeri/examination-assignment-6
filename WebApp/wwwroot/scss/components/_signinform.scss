@@ -13,6 +13,10 @@
         grid-area: password;
     }
 
+    .rememberme {
+        grid-area: rememberme;
+    }
+
     .signin {
         grid-area: signin;
         display: flex;

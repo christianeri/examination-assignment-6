@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
-using WebApp.Models.Entities;
+﻿using WebApp.Models.Entities;
+using WebApp.Models.Identity;
 using WebApp.Repositories;
 
 namespace WebApp.Services
@@ -19,7 +19,7 @@ namespace WebApp.Services
 
 
 
-
+        ////www.youtube.com/watch?v=yGpybKyQlHo 02:22
         public async Task<AddressEntity> GetOrCreateAsync(AddressEntity addressEntity)
         {
             var entity = await _addressRepo.GetAsync(x =>
@@ -36,7 +36,7 @@ namespace WebApp.Services
 
 
 
-        public async Task AddAddressAsync(IdentityUser user, AddressEntity addressEntity)
+        public async Task AddAddressAsync(AppUser user, AddressEntity addressEntity)
         {
             await _userAddressRepo.AddAsync(new UserAddressEntity
             {

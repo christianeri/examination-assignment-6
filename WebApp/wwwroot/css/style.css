@@ -815,6 +815,9 @@ header .toggle {
 .signin-form .password {
   grid-area: password;
 }
+.signin-form .rememberme {
+  grid-area: rememberme;
+}
 .signin-form .signin {
   grid-area: signin;
   display: flex;
