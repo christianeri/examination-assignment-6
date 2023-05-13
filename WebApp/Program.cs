@@ -27,14 +27,13 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(x =>
     x.User.RequireUniqueEmail = true;
     x.Password.RequiredLength = 8;
 
-}).AddEntityFrameworkStores<UserContext>()
-;//.AddClaimsPrincipalFactory<CustomClaimsPrincipalFactory>();
+}).AddEntityFrameworkStores<UserContext>().AddClaimsPrincipalFactory<CustomClaimsPrincipalFactory>();
 
 
 
 builder.Services.ConfigureApplicationCookie(x =>
 {
-    x.LoginPath = "/login";
+    x.LoginPath = "/signin";
     x.LogoutPath = "/";
     x.AccessDeniedPath = "/denied";
 });

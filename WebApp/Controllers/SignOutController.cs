@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using WebApp.Models.Identity;
 using WebApp.Services;
 
 namespace WebApp.Controllers
@@ -9,23 +10,24 @@ namespace WebApp.Controllers
     {
 
 
-        //private readonly SignInManager _signInManager;
-        //public SignOutController(SignInManager signInManager)
-        //{
-        //    _signInManager = signInManager;
-        //}
+        private readonly SignInManager<AppUser> _signInManager;
+        public SignOutController(SignInManager<AppUser> signInManager)
+        {
+            _signInManager = signInManager;
+        }
 
 
 
 
 
-        //public async Task<IActionResult> Index()
-        //{
-        //    if (_signInManager.IsSignedIn(User))
-        //        await _signInManager.SignOutAsync();
+        public async Task<IActionResult> Index()
+        {
+            if (_signInManager.IsSignedIn(User))
+                await _signInManager.SignOutAsync();
 
-        //    return RedirectToAction("Index", "Home");
-        //}
+            //return RedirectToAction("Index", "Home");
+            return LocalRedirect("/");
+        }
 
 
         //private readonly AuthService _authService;

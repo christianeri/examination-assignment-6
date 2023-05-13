@@ -54,8 +54,8 @@ namespace WebApp.ViewModels
 
         [Display(Name = "City (optional)")]
         public string? City { get; set; }
-        
-        
+
+
         [Display(Name = "Profile Picture (optional)")]
         [DataType(DataType.Upload)]
         public IFormFile? ImageFile { get; set; }
@@ -66,14 +66,15 @@ namespace WebApp.ViewModels
 
         public static implicit operator AppUser(SignUpViewModel model)
         {
-            
+
             return new AppUser
             {
                 UserName = model.Email,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Email = model.Email,
-                PhoneNumber = model.PhoneNumber
+                PhoneNumber = model.PhoneNumber,
+                ImageUrl = "/img/placeholders/270x295.svg" //fix
             };
         }
 

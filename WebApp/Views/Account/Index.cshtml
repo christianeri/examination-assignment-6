@@ -4,7 +4,7 @@
 
     if (signInManager.IsSignedIn(User))
     {
-        ViewData["Title"] = @User.Identity.Name;
+        ViewData["Title"] = @User.FindFirst("DisplayName")?.Value;
     }
     else
     {
