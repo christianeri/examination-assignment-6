@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApp.Contexts;
 
@@ -11,9 +12,11 @@ using WebApp.Contexts;
 namespace WebApp.Migrations.User
 {
     [DbContext(typeof(UserContext))]
-    partial class UserContextModelSnapshot : ModelSnapshot
+    [Migration("20230515133744_Seed Admin User Updated")]
+    partial class SeedAdminUserUpdated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,7 +54,7 @@ namespace WebApp.Migrations.User
                     b.HasData(
                         new
                         {
-                            Id = "8f00d990-7a1b-4e4a-866c-4c6f68573439",
+                            Id = "959aafcf-2988-40d9-a9fe-60c5bae5bce2",
                             Name = "System Administrator",
                             NormalizedName = "SYSTEM ADMINISTRATOR"
                         });
@@ -146,8 +149,8 @@ namespace WebApp.Migrations.User
                     b.HasData(
                         new
                         {
-                            UserId = "91ffdb23-e225-4616-b662-a966efa8fede",
-                            RoleId = "8f00d990-7a1b-4e4a-866c-4c6f68573439"
+                            UserId = "ae491ea7-0aa8-4845-98a7-bc8dbaadf9e7",
+                            RoleId = "959aafcf-2988-40d9-a9fe-60c5bae5bce2"
                         });
                 });
 
@@ -289,21 +292,20 @@ namespace WebApp.Migrations.User
                     b.HasData(
                         new
                         {
-                            Id = "91ffdb23-e225-4616-b662-a966efa8fede",
+                            Id = "ae491ea7-0aa8-4845-98a7-bc8dbaadf9e7",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6f0ca6da-0b6a-4c1c-8f56-7c798ab7020d",
-                            Email = "admin@system.com",
+                            ConcurrencyStamp = "811a9fe2-7f4e-4dfd-b975-b6fce6f7abd1",
+                            Email = "administrator@system.com",
                             EmailConfirmed = false,
                             FirstName = " ",
-                            ImageUrl = " ",
+                            ImageUrl = "",
                             LastName = " ",
                             LockoutEnabled = false,
-                            NormalizedUserName = "ADMIN@SYSTEM.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEA6YglBaPWoEomNTjl/xg2ILt8QRWSvBzTqtoWTHaAZ/fBbk5dGoIFGDoom2HCGJbw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEYJZedODXRsNqc6tMztTnsnX00lveFAw2JcvThjSCWRSYmUwLelxkgiBWxh/3QwDQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "48e88063-8a10-4a60-87ac-6a99e025bbd4",
+                            SecurityStamp = "d0be753f-a86d-4885-823a-82f8c220a891",
                             TwoFactorEnabled = false,
-                            UserName = "admin@system.com"
+                            UserName = "administrator@system.com"
                         });
                 });
 

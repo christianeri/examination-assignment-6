@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApp.Contexts;
 
@@ -11,9 +12,11 @@ using WebApp.Contexts;
 namespace WebApp.Migrations.User
 {
     [DbContext(typeof(UserContext))]
-    partial class UserContextModelSnapshot : ModelSnapshot
+    [Migration("20230515130454_Seed Admin Role")]
+    partial class SeedAdminRole
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,7 +54,7 @@ namespace WebApp.Migrations.User
                     b.HasData(
                         new
                         {
-                            Id = "8f00d990-7a1b-4e4a-866c-4c6f68573439",
+                            Id = "f4c50658-b723-4189-927f-9779a8b8b6c0",
                             Name = "System Administrator",
                             NormalizedName = "SYSTEM ADMINISTRATOR"
                         });
@@ -142,13 +145,6 @@ namespace WebApp.Migrations.User
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "91ffdb23-e225-4616-b662-a966efa8fede",
-                            RoleId = "8f00d990-7a1b-4e4a-866c-4c6f68573439"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -285,26 +281,6 @@ namespace WebApp.Migrations.User
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "91ffdb23-e225-4616-b662-a966efa8fede",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "6f0ca6da-0b6a-4c1c-8f56-7c798ab7020d",
-                            Email = "admin@system.com",
-                            EmailConfirmed = false,
-                            FirstName = " ",
-                            ImageUrl = " ",
-                            LastName = " ",
-                            LockoutEnabled = false,
-                            NormalizedUserName = "ADMIN@SYSTEM.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEA6YglBaPWoEomNTjl/xg2ILt8QRWSvBzTqtoWTHaAZ/fBbk5dGoIFGDoom2HCGJbw==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "48e88063-8a10-4a60-87ac-6a99e025bbd4",
-                            TwoFactorEnabled = false,
-                            UserName = "admin@system.com"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

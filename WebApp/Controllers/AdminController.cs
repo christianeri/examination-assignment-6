@@ -5,8 +5,8 @@ namespace WebApp.Controllers
 {
     public class AdminController : Controller
     {
-        //www.youtube.com/watch?v=fQTe81VSxj8 02:55
-        [Authorize(Roles = "admin")]
+        //www.youtube.com/watch?v=yGpybKyQlHo 03:24
+        [Authorize(Roles = "Administrator")]
         public IActionResult Index()
         {
             return View();

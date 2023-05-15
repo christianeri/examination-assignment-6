@@ -8,7 +8,7 @@ namespace WebApp.Models.Identity
         //Id inherited from IdentityUser
         public string FirstName { get; set; } = null!;
         public string LastName { get; set; } = null!;
-        public string ImageUrl { get; set; }
+        public string ImageUrl { get; set; } = null;
 
 
         public ICollection<UserAddressEntity> Addresses { get; set; } = new HashSet<UserAddressEntity>();

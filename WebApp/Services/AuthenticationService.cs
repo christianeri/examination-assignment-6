@@ -12,31 +12,18 @@ namespace WebApp.Services
     public class AuthenticationService
     {
 
-        //private readonly UserManager<AppUser> _userManager;
-        //private readonly AddressService _addressService;
-        //private readonly SignInManager<AppUser> _signInManager;
-        //private readonly RoleManager<IdentityRole> _roleManager;
-        //private readonly SeedService _seedService;
-        //public AuthenticationService(UserContext userContext, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, SeedService seedService, RoleManager<IdentityRole> roleManager, AddressService addressService)
-        //{
-        //    //_userContext = userContext;
-        //    _userManager = userManager;
-        //    _addressService = addressService;
-        //    _signInManager = signInManager;
-        //    _roleManager = roleManager;
-        //    _seedService = seedService;
-        //}
-
 
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly AddressService _addressService;
 
-        public AuthenticationService(UserManager<AppUser> userManager, AddressService addressService, SignInManager<AppUser> signInManager)
+        public AuthenticationService(UserManager<AppUser> userManager, AddressService addressService, SignInManager<AppUser> signInManager, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _addressService = addressService;
             _signInManager = signInManager;
+            _roleManager = roleManager;
         }
 
 
@@ -68,11 +55,22 @@ namespace WebApp.Services
 
 
             AppUser appUser = model;
+            var roleName = "User";
+
+            if(!await _roleManager.Roles.AnyAsync())
+            {
+                await _roleManager.CreateAsync(new IdentityRole("Administrator"));
+                await _roleManager.CreateAsync(new IdentityRole("User"));
+            }
+
+            if(!await _userManager.Users.AnyAsync())
+                roleName = "Administrator";
+
             var result = await _userManager.CreateAsync(appUser, model.Password);
             if(result.Succeeded)
             {
-                //await _userManager.AddToRoleAsync(identityUser, roleName);
-                
+                await _userManager.AddToRoleAsync(appUser, roleName);
+
                 var addressEntity = await _addressService.GetOrCreateAsync(model);
                 if(addressEntity != null)
                 {

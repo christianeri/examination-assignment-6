@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
-
+/*
 namespace WebApp.Services
 {
     public class SeedService
@@ -26,3 +26,4 @@ namespace WebApp.Services
         }
     }
 }
+*/

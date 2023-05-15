@@ -17,7 +17,7 @@ builder.Services.AddScoped<UserAddressRepository>();
 builder.Services.AddScoped<AddressService>();
 
 
-builder.Services.AddScoped<SeedService>();
+//builder.Services.AddScoped<SeedService>();
 //builder.Services.AddScoped<UserProfileService>();
 
 
