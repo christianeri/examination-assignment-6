@@ -20,10 +20,20 @@ namespace WebApp.Factories
 
 
 
+        //protected override async Task<ClaimsIdentity> GenerateClaimsAsync(AppUser user)
         protected override async Task<ClaimsIdentity> GenerateClaimsAsync(AppUser user)
         {
             var claimsIdentity = await base.GenerateClaimsAsync(user);
-            claimsIdentity.AddClaim(new Claim("DisplayName", $"{user.FirstName} {user.LastName}"));
+            //claimsIdentity.AddClaim(new Claim("DisplayName", $"{user.FirstName} {user.LastName}"));
+
+            ((ClaimsIdentity)claimsIdentity).AddClaims(new[]
+    {
+            new Claim("DisplayName", $"{user.FirstName} {user.LastName}".ToString()),
+            new Claim("FirstName", user.FirstName.ToString()),
+            new Claim("LastName", user.LastName.ToString()),
+            new Claim("Email", user.Email.ToString())
+             });
+
 
             return claimsIdentity;
         }

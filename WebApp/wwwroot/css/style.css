@@ -548,7 +548,7 @@ header .menu-links {
 @media (min-width: 992px) {
   header .menu-links {
     position: static;
-    width: 100%;
+    width: fit-content;
     font-size: 16px;
     padding: 0;
     background-color: transparent;
@@ -631,6 +631,12 @@ header .menu-icons .link:hover {
   header .menu-icons .link:hover {
     color: #FA3150;
   }
+}
+header .menu-icons .user-name {
+  min-width: fit-content;
+}
+header .menu-icons .sign-in-or-up {
+  min-width: 120px;
 }
 header .toggle {
   grid-area: toggle;
@@ -1019,14 +1025,20 @@ header .toggle {
   }
 }
 
-.user-state {
+.user-profile {
   font-family: "Poppins", sans-serif;
   border-style: solid;
   border-width: 1px;
 }
-.user-state span {
+.user-profile .container {
+  display: flex;
+  justify-content: space-between;
+}
+.user-profile .container .left {
+  flex: 1;
   color: #ff0000;
 }
-.user-state .link {
+.user-profile .container .right {
+  flex: 1;
   min-width: 100px;
 }

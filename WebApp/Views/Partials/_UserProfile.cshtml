@@ -1,0 +1,24 @@
+﻿<section class="user-profile">
+    <div class="container qq">
+        
+
+            <div class="left content-image qq">
+                <img src="">
+            </div>
+            <div class="right qq">
+                <div>@(User.FindFirst("DisplayName")?.Value)</div>
+                <div>@(User.FindFirst("FirstName")?.Value)</div>
+                <div>@(User.FindFirst("LastName")?.Value)</div>
+                <div>@(User.FindFirst("Email")?.Value)</div>
+                <div>@(User.FindFirst("PhoneNumber")?.Value)</div>
+                <div>@(User.FindFirst("StreetName")?.Value)</div>
+                <div>@(User.FindFirst("PostalCode")?.Value)</div>
+                <div>@(User.FindFirst("City")?.Value)</div>
+            </div>
+
+
+
+
+
+    </div>
+</section>

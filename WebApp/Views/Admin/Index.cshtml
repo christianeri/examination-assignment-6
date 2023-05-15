@@ -13,3 +13,18 @@
 }
 
 <partial name="/Views/Partials/_Breadcrumb.cshtml" />
+<h1>Administrator functions</h1>
+<button class="btn-theme" asp-controller="admin" asp-action="index">Manage products</button>
+<button class="btn-theme" asp-controller="admin" asp-action="index">Manage users</button>
+
+@{
+    if (signInManager.IsSignedIn(User))
+    {
+        ViewData["Title"] = @User.Identity.Name;
+    }
+    else
+    {
+        ViewData["Title"] = "Account";
+    }
+}
+
