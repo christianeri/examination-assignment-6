@@ -17,7 +17,7 @@
         {
             return new ContactModel
             {
-                Id = entity?.Id,
+                Id = entity.Id,
                 Name = entity?.Name,
                 Email = entity?.Email,
                 PhoneNumber = entity?.PhoneNumber,

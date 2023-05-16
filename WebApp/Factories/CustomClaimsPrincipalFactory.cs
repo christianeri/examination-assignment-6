@@ -31,7 +31,8 @@ namespace WebApp.Factories
             new Claim("DisplayName", $"{user.FirstName} {user.LastName}".ToString()),
             new Claim("FirstName", user.FirstName.ToString()),
             new Claim("LastName", user.LastName.ToString()),
-            new Claim("Email", user.Email.ToString())
+            new Claim("Email", user.Email.ToString()),
+            new Claim("ImageUrl", user.ImageUrl.ToString())
              });
 
 

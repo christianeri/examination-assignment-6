@@ -2,6 +2,7 @@
 using WebApp.Contexts;
 using WebApp.Models;
 using WebApp.Models.Entities;
+using WebApp.Repositories.forDataContext;
 using WebApp.ViewModels;
 
 namespace WebApp.Services
@@ -10,16 +11,56 @@ namespace WebApp.Services
     {
 
 
-        private readonly DataContext _context;
-        public ProductService(DataContext context)
+        //private readonly DataContext _context;
+        //public ProductService(DataContext context)
+        //{
+        //    _context = context;
+        //}
+        //
+
+        private readonly ProductRepository _productRepo;
+        private readonly ProductTagRepository _productTagRepo;
+        public ProductService(ProductRepository productRepo, ProductTagRepository productTagRepo)
         {
-            _context = context;
+            _productRepo = productRepo;
+            _productTagRepo = productTagRepo;
         }
 
 
 
 
 
+        public async Task<bool> CreateProductAsync(ProductEntity entity)
+        {
+            var _entity = await _productRepo.GetAsync(x => x.Id == entity.Id);
+            if(_entity == null)
+            {
+                _entity = await _productRepo.AddAsync(entity);
+                if(entity != null)
+                    return true;
+            }
+            return false;
+        }        
+        
+        
+
+        
+        
+        public async Task AddProductTagsAsync(ProductEntity entity, string[] selectedTags)
+        {
+            foreach (var tag in selectedTags)
+            {
+                await _productTagRepo.AddAsync(new ProductTagsEntity
+                {
+                    ProductId = entity.Id,
+                    TagId = int.Parse(tag)
+                });
+            }
+        }
+
+
+        #region obsolete
+        /*
         public async Task<bool> CreateProductAsync(RegisterProductViewModel registerProductViewModel)
         {
             try
@@ -51,5 +92,7 @@ namespace WebApp.Services
             
             return products;
         }
+        */
+        #endregion
     }
 }

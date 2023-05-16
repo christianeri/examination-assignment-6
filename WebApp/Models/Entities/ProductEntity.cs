@@ -7,7 +7,7 @@ namespace WebApp.Models.Entities
     {
         public int Id { get; set; }
 
-        public string ImageUrl { get; set; } = null!;
+        public string ImageUrl { get; set; } = "http://";
 
         public string Category { get; set; } = null!;
 
@@ -19,6 +19,9 @@ namespace WebApp.Models.Entities
         public decimal Price { get; set; } 
 
 
+        public ICollection<ProductTagsEntity> ProductTags { get; set; } = new HashSet<ProductTagsEntity>();
+
+
 
 
 
@@ -26,7 +29,7 @@ namespace WebApp.Models.Entities
         {
             return new ProductModel
             {
-                Id = entity?.Id,
+                Id = entity.Id,
                 ImageUrl = entity?.ImageUrl,
                 Category = entity?.Category,
                 Name = entity?.Name,

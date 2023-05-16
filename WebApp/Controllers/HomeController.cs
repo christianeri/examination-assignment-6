@@ -8,9 +8,6 @@ namespace WebApp.Controllers
         public IActionResult Index()
         {
 
-
-
-
             var viewModel = new HomeIndexViewModel() 
             {
                 BestCollection = new GridCollectionViewModel

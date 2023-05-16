@@ -55,16 +55,16 @@ namespace WebApp.Services
 
 
             AppUser appUser = model;
-            var roleName = "User";
+            var roleName = "user";
 
             if(!await _roleManager.Roles.AnyAsync())
             {
-                await _roleManager.CreateAsync(new IdentityRole("Administrator"));
-                await _roleManager.CreateAsync(new IdentityRole("User"));
+                await _roleManager.CreateAsync(new IdentityRole("administrator"));
+                await _roleManager.CreateAsync(new IdentityRole("user"));
             }
 
             if(!await _userManager.Users.AnyAsync())
-                roleName = "Administrator";
+                roleName = "administrator";
 
             var result = await _userManager.CreateAsync(appUser, model.Password);
             if(result.Succeeded)

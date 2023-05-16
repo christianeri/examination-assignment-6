@@ -8,9 +8,11 @@ namespace WebApp.Controllers
     {
 
         private readonly ProductService _productService;
-        public ProductsController(ProductService productService)
+        private readonly TagService _tagService;
+        public ProductsController(ProductService productService, TagService tagService)
         {
             _productService = productService;
+            _tagService = tagService;
         }
 
 
@@ -19,6 +21,8 @@ namespace WebApp.Controllers
 
         public IActionResult Index()
         {
+
+
             var viewModel = new ProductsIndexViewModel
             {
                 All = new GridCollectionViewModel
@@ -34,27 +38,26 @@ namespace WebApp.Controllers
 
 
 
-        public IActionResult Manage()
-        {
-            return View();
-        }
 
-        public IActionResult Register()
+        public async Task<IActionResult> Register()
         {
+            ViewBag.Tags = await _tagService.GetTagsAsync();
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterProductViewModel registerProductViewModel)
+        public async Task<IActionResult> Register(RegisterProductViewModel model, string[] selectedTags)
         {
             if (ModelState.IsValid)
             {
-                if (await _productService.CreateProductAsync(registerProductViewModel))
-                    return RedirectToAction("Manage", "Products");
-
+                if(await _productService.CreateProductAsync(model))
+                {
+                    await _productService.AddProductTagsAsync(model, selectedTags);
+                    return RedirectToAction("register", "products");
+                }
                 ModelState.AddModelError("", "Something went wrong when creating product");
-
             }
+            ViewBag.Tags = await _tagService.GetTagsAsync(selectedTags);
             return View();
         }
     }

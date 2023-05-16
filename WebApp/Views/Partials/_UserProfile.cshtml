@@ -1,9 +1,9 @@
-﻿<section class="user-profile">
+﻿
+<section class="user-profile">
     <div class="container qq">
-        
 
             <div class="left content-image qq">
-                <img src="">
+                <img src="@(User.FindFirst("ImageUrl")?.Value)">
             </div>
             <div class="right qq">
                 <div>@(User.FindFirst("DisplayName")?.Value)</div>
@@ -15,10 +15,6 @@
                 <div>@(User.FindFirst("PostalCode")?.Value)</div>
                 <div>@(User.FindFirst("City")?.Value)</div>
             </div>
-
-
-
-
 
     </div>
 </section>
