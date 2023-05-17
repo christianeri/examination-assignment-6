@@ -21,23 +21,21 @@ namespace WebApp.Controllers
 
         public async Task<IActionResult> Index()
         {
-            //var viewModel = new ProductsIndexViewModel
-            //{
-            //    All = new GridCollectionViewModel
-            //    {
-            //        Title = "All Products",
-            //        Tags = new List<string> { "All", "Mobile", "Laptops" }
-            //    }
-            //};
-            //return View(viewModel);
-
             var model = new AllProductsViewModel
             {
                 Products = await _productService.GetAllProductsAsync()
             };
             return View(model);
+        }        
+        
+        
+        
+        
+        
+        public async Task<IActionResult> Details()
+        {
+            return View();
         }
-
 
 
 

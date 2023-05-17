@@ -7,6 +7,12 @@
   border-color: #ff0000;
 }
 
+.q2 {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #ffc000;
+}
+
 html, body {
   font-size: 16px;
   font-family: "Roboto", sans-serif;
@@ -730,6 +736,111 @@ header .toggle {
     margin-left: 15px;
     content: "SUBSCRIBE FOR NEWSLETTER";
   }
+}
+
+.product-details {
+  position: relative;
+}
+.product-details h4 {
+  margin: 0;
+  padding: 0;
+}
+.product-details p {
+  color: var(--fixxo-grey-1);
+  margin-right: 1rem;
+}
+.product-details .left {
+  width: 60px;
+}
+.product-details .item-counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+.product-details .item-counter div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: #ffffff;
+  border-left: none;
+  border-top: solid 1px #808080;
+  border-right: none;
+  border-bottom: solid 1px #808080;
+}
+.product-details .item-counter button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: #ffffff;
+  border: solid 1px #808080;
+}
+.product-details .img-lg {
+  width: 100%;
+}
+.product-details .img-sm {
+  width: 100%;
+}
+.product-details .tab {
+  font-size: var(--size-16);
+  font-weight: var(--font-w-medium);
+  color: var(--fixxo-grey-1);
+  text-transform: capitalize;
+  border-bottom: 2px solid var(--fixxo-grey-3);
+  text-align: center;
+  padding-bottom: 0.5rem;
+}
+.product-details .tabs div {
+  text-align: center;
+}
+.product-details .tab-1:hover {
+  color: var(--fixxo-theme);
+  border-bottom: 2px solid var(--fixxo-theme);
+}
+.product-details .tab-2:hover {
+  color: var(--fixxo-theme);
+  border-bottom: 2px solid var(--fixxo-theme);
+}
+.product-details .tab-3:hover {
+  color: var(--fixxo-theme);
+  border-bottom: 2px solid var(--fixxo-theme);
+}
+.product-details .tab-4:hover {
+  color: var(--fixxo-theme);
+  border-bottom: 2px solid var(--fixxo-theme);
+}
+.product-details .tab-body {
+  padding: 0 27px;
+}
+.product-details .tab-body ul {
+  list-style: none;
+}
+
+.size-value {
+  width: 20px;
+  border: 2px solid var(--fixxo-dark);
+  text-align: left;
+}
+
+.color-value {
+  width: fit-content;
+  border: 2px solid var(--fixxo-dark);
+  text-align: left;
+}
+
+.round-button {
+  position: relative;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--fixxo-grey-3);
+  text-align: center;
+  transition: 0.2s;
 }
 
 .showcase {

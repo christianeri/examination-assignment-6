@@ -25,7 +25,6 @@
   <ItemGroup>
     <None Include="compilerconfig.json" />
     <None Include="Views\Contact\Index.cshtml" />
-    <None Include="Views\Partials\_GridCollection.cshtml" />
     <None Include="Views\Partials\_Breadcrumb.cshtml" />
     <None Include="Views\Partials\_ContactForm.cshtml" />
     <None Include="Views\Partials\_Footer.cshtml" />
