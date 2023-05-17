@@ -1,4 +1,4 @@
-﻿@model RegisterProductViewModel
+﻿@model AddProductViewModel
 @{
     ViewData["Title"] = "Register new product";
 }
@@ -6,71 +6,66 @@
 
 <div class="d-flex justify-content-center">
     <div class="col-6">
-        <form method="post" novalidate>
-
-
+        <form enctype="multipart/form-data" method="post" asp-action="Register" novalidate>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <div class="mb-3" style="margin-top: 150px">
-                <label asp-for="Category" class="form-label"></label>
-                <input asp-for="Category" class="form-control" />
-                <span asp-validation-for="Category" class="text-danger" rows="5"></span></small>
+            <div class="mb-3" style="margin-top:150px">
+                <label asp-for="ArticleNumber" class="form-label"></label>
+                <input asp-for="ArticleNumber" class="form-control" />
+                <span asp-validation-for="ArticleNumber" class="text-danger" rows="5"></span>
             </div>
 
+            <div class="mb-3">
+                <label asp-for="Category" class="form-label"></label>
+                <input asp-for="Category" class="form-control" />
+                <span asp-validation-for="Category" class="text-danger" rows="5"></span>
+            </div>
 
             <div class="mb-3">
-                
+
                 <label class="form-label">Tags</label>
                 <div class="d-flex justify-content-center">
 
-                @foreach(SelectListItem tag in ViewBag.Tags)
-                {
-                    <div class="form-check" style="width:140px">
-                        <input type="checkbox" value="@tag.Value" checked="@tag.Selected" class="form-check-input mx-2" name="Tags" id="@tag.Text-@tag.Value">
-                        <label for="@tag.Text-@tag.Value" class="form-check-label pt-1">@tag.Text</label>
-                    </div>
-                        
-                }
+                    @foreach (SelectListItem tag in ViewBag.Tags)
+                    {
+                        <!--//www.youtube.com/watch?v=YNKv02TK2xw 0:33-->
+                        <div class="form-check" style="width:140px">
+                            <input type="checkbox" name="selectedTags" id="tag-@tag.Text-@tag.Value" value="@tag.Value" checked="@tag.Selected" class="form-check-input mx-2">
+                            <label for="tag-@tag.Text-@tag.Value" class="form-check-label pt-1">@tag.Text</label>
+                        </div>
+                    }
 
-                    <!--
-                    <div class="form-check" style="width:140px">
-                        <input class="form-check-input mx-2" type="checkbox" value="" id="flexCheckChecked" checked>
-                        <label class="form-check-label pt-1" for="flexCheckChecked">Popular</label>
-                    </div>
-                    <div class="form-check" style="width:140px">
-                        <input class="form-check-input mx-2" type="checkbox" value="" id="flexCheckChecked" checked>
-                        <label class="form-check-label pt-1" for="flexCheckChecked">Featured</label>
-                    </div>
-                    -->
-                
                 </div>
             </div>
-
-
 
             <div class="mb-3">
                 <label asp-for="Name" class="form-label"></label>
                 <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger" rows="5"></span></small>
+                <span asp-validation-for="Name" class="text-danger" rows="5"></span>
             </div>
 
             <div class="mb-3">
                 <label asp-for="Description" class="form-label"></label>
                 <textarea asp-for="Description" class="form-control"></textarea>
-                <span asp-validation-for="Description" class="text-danger"></span></small>
+                <span asp-validation-for="Description" class="text-danger"></span>
             </div>
 
             <div class="mb-3">
                 <label asp-for="Price" class="form-label"></label>
                 <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span></small>
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>            
+            
+            <div class="mb-3">
+                <label asp-for="Image" class="form-label"></label>
+                <input asp-for="Image" class="form-control" />
+                <span asp-validation-for="Image" class="text-danger"></span>
             </div>
 
 
             <div class="d-grid" style="margin-bottom: 100px">
                 <button class="btn btn-success mt-4">REGISTER PRODUCT</button>
             </div>
-
 
         </form>
     </div>

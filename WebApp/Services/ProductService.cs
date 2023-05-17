@@ -1,9 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using WebApp.Contexts;
-using WebApp.Models;
+﻿using WebApp.Models.Dtos;
 using WebApp.Models.Entities;
 using WebApp.Repositories.forDataContext;
-using WebApp.ViewModels;
 
 namespace WebApp.Services
 {
@@ -20,26 +17,44 @@ namespace WebApp.Services
 
         private readonly ProductRepository _productRepo;
         private readonly ProductTagRepository _productTagRepo;
-        public ProductService(ProductRepository productRepo, ProductTagRepository productTagRepo)
+        private readonly IWebHostEnvironment _webHostEnv;
+        public ProductService(ProductRepository productRepo, ProductTagRepository productTagRepo, IWebHostEnvironment webHostEnv)
         {
             _productRepo = productRepo;
             _productTagRepo = productTagRepo;
+            _webHostEnv = webHostEnv;
         }
 
 
 
 
 
-        public async Task<bool> CreateProductAsync(ProductEntity entity)
+         public async Task<IEnumerable<ProductDto>> GetAllProductsAsync()
         {
-            var _entity = await _productRepo.GetAsync(x => x.Id == entity.Id);
+            var items = await _productRepo.GetAllAsync();
+            var list = new List<ProductDto>();
+            foreach (var item in items) 
+            {
+                list.Add(item);
+            }
+            return list;
+        }
+
+
+
+        //public async Task<bool> CreateProductAsync(ProductEntity entity)
+        public async Task<ProductDto> CreateProductAsync(ProductEntity entity)
+        {
+            var _entity = await _productRepo.GetAsync(x => x.ArticleNumber == entity.ArticleNumber);
             if(_entity == null)
             {
                 _entity = await _productRepo.AddAsync(entity);
                 if(entity != null)
-                    return true;
+                    //return true;
+                    return _entity;
             }
-            return false;
+            //return false;
+            return null;
         }        
         
         
@@ -50,11 +65,29 @@ namespace WebApp.Services
         {
             foreach (var tag in selectedTags)
             {
-                await _productTagRepo.AddAsync(new ProductTagsEntity
+                await _productTagRepo.AddAsync(new ProductTagEntity
                 {
-                    ProductId = entity.Id,
+                    ArticleNumber = entity.ArticleNumber,
                     TagId = int.Parse(tag)
                 });
+            }
+        }
+
+
+
+
+
+        public async Task<bool> UploadImageAsync(ProductDto productDto, IFormFile image)
+        {
+            try
+            {
+                string productImageFolderPath = $"{_webHostEnv.WebRootPath}/img/productimages/{productDto.ImageUrl}";
+                await image.CopyToAsync(new FileStream(productImageFolderPath, FileMode.Create));
+                return true;
+            }
+            catch 
+            {
+                return false;
             }
         }
 

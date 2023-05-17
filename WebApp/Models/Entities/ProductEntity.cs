@@ -1,40 +1,56 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.Net.Mime;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using WebApp.Models.Dtos;
 
 namespace WebApp.Models.Entities
 {
     public class ProductEntity
     {
-        public int Id { get; set; }
+        [Key]
+        public string ArticleNumber { get; set; }
 
-        public string ImageUrl { get; set; } = "http://";
+        public string? ImageUrl { get; set; }
 
         public string Category { get; set; } = null!;
 
         public string Name { get; set; } = null!;
         
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         [Column(TypeName = "money")]
         public decimal Price { get; set; } 
 
 
-        public ICollection<ProductTagsEntity> ProductTags { get; set; } = new HashSet<ProductTagsEntity>();
+        public ICollection<ProductTagEntity> ProductTags { get; set; } = new HashSet<ProductTagEntity>();
 
 
 
 
 
-        public static implicit operator ProductModel(ProductEntity entity)
+        //public static implicit operator ProductModel(ProductEntity entity)
+        //{
+        //    return new ProductModel
+        //    {
+        //        ArticleNumber = entity.ArticleNumber,
+        //        ImageUrl = entity?.ImageUrl,
+        //        Category = entity?.Category,
+        //        Name = entity?.Name,
+        //        Description = entity?.Description,
+        //        Price = entity?.Price
+        //    };
+        //}        
+
+
+        public static implicit operator ProductDto(ProductEntity entity)
         {
-            return new ProductModel
+            return new ProductDto
             {
-                Id = entity.Id,
+                ArticleNumber = entity.ArticleNumber,
                 ImageUrl = entity?.ImageUrl,
                 Category = entity?.Category,
                 Name = entity?.Name,
                 Description = entity?.Description,
-                Price = entity?.Price
+                Price = entity.Price
             };
         }
     }

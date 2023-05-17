@@ -19,6 +19,7 @@
     <Folder Include="Contexts\DB\" />
     <Folder Include="Repositories\forUserContext\" />
     <Folder Include="wwwroot\css\" />
+    <Folder Include="wwwroot\img\productimages\" />
   </ItemGroup>
 
   <ItemGroup>

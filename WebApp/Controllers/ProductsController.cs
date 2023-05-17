@@ -19,19 +19,23 @@ namespace WebApp.Controllers
 
 
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            //var viewModel = new ProductsIndexViewModel
+            //{
+            //    All = new GridCollectionViewModel
+            //    {
+            //        Title = "All Products",
+            //        Tags = new List<string> { "All", "Mobile", "Laptops" }
+            //    }
+            //};
+            //return View(viewModel);
 
-
-            var viewModel = new ProductsIndexViewModel
+            var model = new AllProductsViewModel
             {
-                All = new GridCollectionViewModel
-                {
-                    Title = "All Products",
-                    Categories = new List<string> { "All", "Mobile", "Laptops" }
-                }
+                Products = await _productService.GetAllProductsAsync()
             };
-            return View(viewModel);
+            return View(model);
         }
 
 
@@ -46,19 +50,24 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterProductViewModel model, string[] selectedTags)
+        public async Task<IActionResult> Register(AddProductViewModel model, string[] selectedTags)
         {
             if (ModelState.IsValid)
             {
-                if(await _productService.CreateProductAsync(model))
+                //if (await _productService.CreateProductAsync(model))
+                var productDto = await _productService.CreateProductAsync(model);
+                if (productDto != null) 
                 {
                     await _productService.AddProductTagsAsync(model, selectedTags);
+
+                    if(model.Image != null) {await _productService.UploadImageAsync(productDto, model.Image!);}
+                    
                     return RedirectToAction("register", "products");
                 }
                 ModelState.AddModelError("", "Something went wrong when creating product");
             }
-            ViewBag.Tags = await _tagService.GetTagsAsync(selectedTags);
-            return View();
+            ViewBag.Tags = await _tagService.GetTagsAsync();
+            return View(model);
         }
     }
 }

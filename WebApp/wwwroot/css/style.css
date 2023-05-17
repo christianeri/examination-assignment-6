@@ -301,6 +301,8 @@ html, body {
   background-color: #FFFFFF;
   text-decoration: none;
   display: block;
+  max-width: 300px;
+  max-height: 400px;
 }
 .collection-item img {
   width: 100%;

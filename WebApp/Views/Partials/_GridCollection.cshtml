@@ -6,10 +6,10 @@
         <div class="container">
             <h1 class="title">@Model.Title</h1>
 
-            @if (Model.Categories != null)
+            @if (Model.Tags != null)
             {
                 <ul class="categories">
-                    @foreach (var category in Model.Categories)
+                    @foreach (var category in Model.Tags)
                     {
                         <li class="category-item">@category</li>
                     }

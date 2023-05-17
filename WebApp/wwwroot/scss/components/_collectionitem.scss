@@ -2,6 +2,9 @@
     background-color: $color-white;
     text-decoration: none;
     display: block;
+    max-width: 300px;
+    max-height: 400px;
+
 
     img {
         width: 100%;
@@ -47,8 +50,6 @@
                 }
             }
         }
-
-
     }
 
     &:hover {

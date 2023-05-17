@@ -11,8 +11,8 @@ using WebApp.Contexts;
 namespace WebApp.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230516162129_Init DB")]
-    partial class InitDB
+    [Migration("20230517111436_Products Table Updated")]
+    partial class ProductsTableUpdated
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -59,22 +59,17 @@ namespace WebApp.Migrations
 
             modelBuilder.Entity("WebApp.Models.Entities.ProductEntity", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("ArticleNumber")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Category")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -84,20 +79,20 @@ namespace WebApp.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("money");
 
-                    b.HasKey("Id");
+                    b.HasKey("ArticleNumber");
 
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("WebApp.Models.Entities.ProductTagsEntity", b =>
+            modelBuilder.Entity("WebApp.Models.Entities.ProductTagEntity", b =>
                 {
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
+                    b.Property<string>("ArticleNumber")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("TagId")
                         .HasColumnType("int");
 
-                    b.HasKey("ProductId", "TagId");
+                    b.HasKey("ArticleNumber", "TagId");
 
                     b.HasIndex("TagId");
 
@@ -138,11 +133,11 @@ namespace WebApp.Migrations
                         });
                 });
 
-            modelBuilder.Entity("WebApp.Models.Entities.ProductTagsEntity", b =>
+            modelBuilder.Entity("WebApp.Models.Entities.ProductTagEntity", b =>
                 {
                     b.HasOne("WebApp.Models.Entities.ProductEntity", "Product")
                         .WithMany("ProductTags")
-                        .HasForeignKey("ProductId")
+                        .HasForeignKey("ArticleNumber")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

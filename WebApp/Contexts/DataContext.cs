@@ -20,6 +20,6 @@ namespace WebApp.Contexts
                 new TagEntity {Id = 3, TagName = "Popular" }
             );
         }
-        public DbSet<ProductTagsEntity> ProductTags { get; set; }
+        public DbSet<ProductTagEntity> ProductTags { get; set; }
     }
 }
