@@ -1,64 +1,42 @@
-﻿
+﻿@model ProductDetailsViewModel
 
 
 <section class="product-details">
     <div class="container">
-        <div class="row qq">
-            
-            
-            <div class="col-sm q2" id="main-top-left">
-                <div class="row g-0 qq">
-                    <div class="col-12 p-1 qq">
-                        <img src="~/img/placeholders/501x430.svg" class="img-lg" />
+        <div class="row">
 
-                    </div>
-                    <div class="row g-0 qq">
-                        <div class="col-3 p-1 qq">
-                            <img src="~/img/placeholders/120x113.svg" alt={item.name} class="img-sm" />
-                        </div>
-                        <div class="col-3 p-1 qq">
-                            <img src="~/img/placeholders/120x113.svg" alt={item.name} class="img-sm" />
-                        </div>
-                        <div class="col-3 p-1 qq">
-                            <img src="~/img/placeholders/120x113.svg" alt={item.name} class="img-sm" />
-                        </div>                       
-                        <div class="col-3 p-1 qq">
-                            <img src="~/img/placeholders/120x113.svg" alt={item.name} class="img-sm" />
-                        </div>
-                    </div>
-                    <!--
 
-                    <div class="row p-3 g-0 qq">
-                        <div class="col tab tab-1">
-                            Description
+            <div class="col-sm" id="main-top-left">
+                <div class="row g-0">
+                    <div class="col-12 p-1">
+                        <img src="/img/productimages/@Model.ProductItem.ImageUrl" alt="/img/placeholders/501x430.svg" class="img-lg" />
+                    </div>
+                    <div class="row g-0">
+                        <div class="col-3 p-1">
+                            <img src="/img/productimages/@Model.ProductItem.ImageUrl" alt="/img/placeholders/120x113.svg" class="img-sm" />
                         </div>
-                        <div class="col tab tab-2 qq">
-                            Additional
+                        <div class="col-3 p-1">
+                            <img src="/img/productimages/@Model.ProductItem.ImageUrl" alt="/img/placeholders/120x113.svg" class="img-sm" />
                         </div>
-                        <div class="col tab tab-3">
-                            Shopping & returns
+                        <div class="col-3 p-1">
+                            <img src="/img/productimages/@Model.ProductItem.ImageUrl" alt="/img/placeholders/120x113.svg" class="img-sm" />
                         </div>
-                        <div class="col tab tab-4">
-                            Reviews
+                        <div class="col-3 p-1">
+                            <img src="/img/productimages/@Model.ProductItem.ImageUrl" class="img-sm" />
                         </div>
                     </div>
-                    -->
                 </div>
-
-
             </div>
 
 
-            <div class="col-sm pt-3 right q2" id="main-top-right">
+            <div class="col-sm pt-3 right" id="main-top-right">
                 <div>
-                    <h3>{item.name}</h3>
+                    <h3>@Model.ProductItem.Name</h3>
                     <p class="py-2">
-                        Discovered had get considered projection who favourable. Necessary up knowledge it tolerably.
-                        Unwilling departure education is be dashwoods or an.
-                        Use off agreeable law unwilling sir deficient curiosity instantly. (read more)
+                        @Model.ProductItem.Description
                     </p>
                     <span>
-                        <span>SKU: 12345670 </span><span class="px-3">BRAND: The Northland</span>
+                        <span>Article Number: @Model.ProductItem.ArticleNumber</span><span class="px-3">BRAND: The Northland</span>
                     </span>
                     <div class="card-rating py-3" id="product-rating">
                         <i class="fa-solid fa-star"></i>
@@ -67,7 +45,7 @@
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                     </div>
-                    <h3 class="card-price">€{item.price}</h3>
+                    <h3 class="card-price">€@Model.ProductItem.Price</h3>
 
                 </div>
                 <div class="">
@@ -97,7 +75,6 @@
                         <div class=""></div>
                     </div>
 
-
                     <!--
                     <div class="row my-4">
                         <div class="left">Share:</div>
@@ -120,22 +97,24 @@
                         </div>
                     </div>
                     -->
+
                 </div>
             </div>
 
-            <div class="row tabs my-4 px-3 qq g-0">
-                <div class="col-3 btn-theme p-2 q2">description</div>
-                <div class="col-3 btn-theme p-2 q2">additional info</div>
-                <div class="col-3 btn-theme p-2 q2">reviews</div>
-                <div class="col-3 btn-theme p-2 q2">shipping & delivery</div>
-
-
+            <div class="row tabs my-4 px-3 g-0">
+                <div class="col-3 tab-theme p-2">DESCRIPTION</div>
+                <div class="col-3 tab-theme p-2">ADDITIONAL INFO</div>
+                <div class="col-3 tab-theme p-2">REVIEWS</div>
+                <div class="col-3 tab-theme p-2">SHIPPING & DELIVERY</div>
             </div>
 
             <div class="row tab-body p-3 g-0">
-                <div class="row pb-2">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie.</div>
-                <div class="col-6 qq">
-                    <p>Way extensive and dejection get delivered deficient sincerity gentleman age. Too end instrument possession contrasted motionless. Calling offence six joy feeling. Coming merits and was talent enough far. Sir joy northward sportsmen education. Discovery incommode earnestly no he commanded if. Put still any about manor heard.</p>
+
+                <div class="row pb-3"><h4>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie.</h4></div>
+                <div class="col-6">
+
+                    <p>Way extensive and dejection get delivered deficient sincerity gentleman age. Too end instrument possession contrasted motionless. Calling offence six joy feeling. Coming merits and was talent enough far. Sir joy northward sportsmen education. Discovery incommode earnestly no he commanded if. Put still any about manor heard.
+                    </p>
 
                     <ul class="mt-3">
                         <li>* Village did removed enjoyed explain nor ham saw calling talking.</li>
@@ -147,11 +126,11 @@
                         <li>* Joy horrible moreover man feelings own shy.</li>
                     </ul>
 
-                    <p>
-                        On even feet time have an no at. Relation so in confined smallest children unpacked delicate. Why sir end believe uncivil respect. Always get adieus nature day course for common. My little garret repair to desire he esteem.
+                    <p>On even feet time have an no at. Relation so in confined smallest children unpacked delicate. Why sir end believe uncivil respect. Always get adieus nature day course for common. My little garret repair to desire he esteem.
                     </p>
+
                 </div>
-                <div class="col-6 q2">
+                <div class="col-6">
                     <img src="~/img/placeholders/469x356.svg" class="img-lg" />
                 </div>
 

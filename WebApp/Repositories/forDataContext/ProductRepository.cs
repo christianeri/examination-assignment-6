@@ -12,7 +12,7 @@ namespace WebApp.Repositories.forDataContext
         {
         }
 
-        #region Repository
+        #region obsolete
         /*
         public abstract class DataRepository<TEntity> where TEntity : class
         {

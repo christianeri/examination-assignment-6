@@ -28,6 +28,7 @@ namespace WebApp.ViewModels
         [Required(ErrorMessage = "Product price is required")]
         [Display(Name = "Product Price *")]
         [DataType(DataType.Currency)]
+        [DisplayFormat(DataFormatString = "{0:C4}")]
         public decimal Price { get; set; }
 
 

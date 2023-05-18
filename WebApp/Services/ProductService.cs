@@ -38,7 +38,22 @@ namespace WebApp.Services
                 list.Add(item);
             }
             return list;
+        }         
+        
+        
+
+        
+        
+        public async Task<ProductDto> GetProductAsync(string articleNumber)
+        {
+            var _entity = await _productRepo.GetAsync(x => x.ArticleNumber == articleNumber);
+            if (_entity != null)
+                return _entity;
+
+            return null;
         }
+
+
 
 
 

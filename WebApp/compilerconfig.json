@@ -2,5 +2,9 @@
   {
     "outputFile": "wwwroot/css/style.css",
     "inputFile": "wwwroot/scss/style.scss"
+  },
+  {
+    "outputFile": "wwwroot/scss/components/_productdetails.css",
+    "inputFile": "wwwroot/scss/core/_colors.scss"
   }
 ]

@@ -32,9 +32,13 @@ namespace WebApp.Controllers
         
         
         
-        public async Task<IActionResult> Details()
+        public async Task<IActionResult> Details(string product)
         {
-            return View();
+            var model = new ProductDetailsViewModel
+            {
+                ProductItem = await _productService.GetProductAsync(product)
+            };
+            return View(model);
         }
 
 

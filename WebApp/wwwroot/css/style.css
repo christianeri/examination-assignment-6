@@ -746,7 +746,7 @@ header .toggle {
   padding: 0;
 }
 .product-details p {
-  color: var(--fixxo-grey-1);
+  color: #636363;
   margin-right: 1rem;
 }
 .product-details .left {
@@ -766,9 +766,9 @@ header .toggle {
   height: 40px;
   background-color: #ffffff;
   border-left: none;
-  border-top: solid 1px #808080;
+  border-top: solid 1px #AEAEAE;
   border-right: none;
-  border-bottom: solid 1px #808080;
+  border-bottom: solid 1px #AEAEAE;
 }
 .product-details .item-counter button {
   display: flex;
@@ -777,7 +777,7 @@ header .toggle {
   width: 40px;
   height: 40px;
   background-color: #ffffff;
-  border: solid 1px #808080;
+  border: solid 1px #AEAEAE;
 }
 .product-details .img-lg {
   width: 100%;
@@ -785,50 +785,40 @@ header .toggle {
 .product-details .img-sm {
   width: 100%;
 }
-.product-details .tab {
-  font-size: var(--size-16);
-  font-weight: var(--font-w-medium);
-  color: var(--fixxo-grey-1);
-  text-transform: capitalize;
-  border-bottom: 2px solid var(--fixxo-grey-3);
+.product-details .tabs {
   text-align: center;
-  padding-bottom: 0.5rem;
+  border: none;
 }
-.product-details .tabs div {
+.product-details .tabs .tab-theme {
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  padding: 10px 35px;
+  border: 1px solid #AEAEAE;
+  border-right: none;
+  background-color: #FFFFFF;
+  color: #636363;
   text-align: center;
+  text-decoration: none;
+  transition: all 0.25s ease-in-out;
 }
-.product-details .tab-1:hover {
-  color: var(--fixxo-theme);
-  border-bottom: 2px solid var(--fixxo-theme);
+.product-details .tabs .tab-theme:hover {
+  border: 1px solid #FA3150;
+  background-color: #FA3150;
+  color: #FFFFFF;
 }
-.product-details .tab-2:hover {
-  color: var(--fixxo-theme);
-  border-bottom: 2px solid var(--fixxo-theme);
-}
-.product-details .tab-3:hover {
-  color: var(--fixxo-theme);
-  border-bottom: 2px solid var(--fixxo-theme);
-}
-.product-details .tab-4:hover {
-  color: var(--fixxo-theme);
-  border-bottom: 2px solid var(--fixxo-theme);
-}
-.product-details .tab-body {
-  padding: 0 27px;
-}
-.product-details .tab-body ul {
-  list-style: none;
+.product-details .tabs div:nth-child(4) {
+  border-right: 1px solid #AEAEAE;
 }
 
 .size-value {
   width: 20px;
-  border: 2px solid var(--fixxo-dark);
+  border: 1px solid #AEAEAE;
   text-align: left;
 }
 
 .color-value {
   width: fit-content;
-  border: 2px solid var(--fixxo-dark);
+  border: 1px solid #AEAEAE;
   text-align: left;
 }
 
@@ -838,7 +828,7 @@ header .toggle {
   height: 27px;
   border-radius: 50%;
   border: none;
-  background-color: var(--fixxo-grey-3);
+  background-color: #AEAEAE;
   text-align: center;
   transition: 0.2s;
 }

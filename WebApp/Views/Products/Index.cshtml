@@ -4,6 +4,7 @@
     ViewData["Title"] = "All Products";
     ViewData["Page"] = "Home";
     ViewData["Function"] = "All Products";
+    ViewData["Product"] = "";
 }
 
 <partial name="/Views/Partials/_Breadcrumb.cshtml" />
@@ -11,7 +12,8 @@
 <div class="pt-5 container">
     @foreach(var product in Model.Products)
     {
-        <a asp-controller="products" asp-action="details" asp-route-id="@product.ArticleNumber" class="collection-item">
+        <a asp-controller="products" asp-action="details" asp-route-product="@product.ArticleNumber" class="collection-item">
+
             @if (@product.ImageUrl != null)
             {
                 <img src="/img/productimages/@product.ImageUrl" alt="@product.Name">
