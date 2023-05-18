@@ -5,5 +5,6 @@ namespace WebApp.ViewModels
     public class ProductDetailsViewModel
     {
         public ProductDto ProductItem { get; set; }
+
     }
 }

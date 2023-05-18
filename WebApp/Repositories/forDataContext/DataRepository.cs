@@ -51,10 +51,23 @@ namespace WebApp.Repositories.forDataContext
 
 
         //filter using $expression
-        public virtual async Task<IEnumerable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> expression)
+        public virtual async Task<List<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> expression)
+        {
+            return await _dataContext.Set<TEntity>().Where(expression).ToListAsync();
+        }        
+        
+        
+
+        
+        
+        public virtual async Task<List<TEntity>> GetSelectedAsync(Expression<Func<TEntity, bool>> expression)
         {
             return await _dataContext.Set<TEntity>().Where(expression).ToListAsync();
         }
+
+
+
+
 
 
 

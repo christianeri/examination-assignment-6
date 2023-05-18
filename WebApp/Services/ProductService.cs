@@ -1,4 +1,7 @@
-﻿using WebApp.Models.Dtos;
+﻿using Azure;
+using System.Linq;
+using System.Collections.Generic;
+using WebApp.Models.Dtos;
 using WebApp.Models.Entities;
 using WebApp.Repositories.forDataContext;
 
@@ -52,6 +55,60 @@ namespace WebApp.Services
 
             return null;
         }
+
+
+
+
+
+
+
+
+        public async Task<IEnumerable<ProductDto>> GetSelectedProductsAsync(int[]? selectedTags)
+        {
+
+            var list = new List<ProductTagEntity>();
+            foreach (var item in selectedTags)
+            {
+                list = await _productTagRepo.GetSelectedAsync(x => x.TagId == item);
+            }
+            
+            var result = new List<string>();
+            foreach (var item in list)
+            {
+                result.Add(item.ArticleNumber);
+            }
+            
+            var productDtos = new List<ProductDto>();
+            foreach (var item in result)
+            {
+                productDtos.Add(await _productRepo.GetAsync(x => x.ArticleNumber == item));
+            }
+                       
+            return productDtos;
+
+
+            //var items = await _productRepo.GetAllAsync();
+            //var list = new List<ProductDto>();
+            //foreach (var item in items)
+            //{
+            //    list.Add(item);
+            //}
+            //return list;
+        } 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

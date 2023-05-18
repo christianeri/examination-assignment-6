@@ -2,8 +2,9 @@
 
 namespace WebApp.ViewModels
 {
-    public class AllProductsViewModel
+    public class SelectedProductsViewModel
     {
         public IEnumerable<ProductDto> Products { get; set; } = new List<ProductDto>();
+        public List<string> AssociatedTags { get; set; }
     }
 }

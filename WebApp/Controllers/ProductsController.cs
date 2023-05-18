@@ -21,10 +21,25 @@ namespace WebApp.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var model = new AllProductsViewModel
+            var model = new SelectedProductsViewModel
             {
                 Products = await _productService.GetAllProductsAsync()
             };
+            ViewBag.Tags = await _tagService.GetTagsAsync();
+            return View(model);
+        }
+
+
+
+
+
+        public async Task<IActionResult> Filter(int[] selectedTags)
+        {
+            var model = new SelectedProductsViewModel
+            {
+                Products = await _productService.GetSelectedProductsAsync(selectedTags)
+            };
+            ViewBag.Tags = await _tagService.GetTagsAsync();
             return View(model);
         }        
         
@@ -38,6 +53,7 @@ namespace WebApp.Controllers
             {
                 ProductItem = await _productService.GetProductAsync(product)
             };
+
             return View(model);
         }
 

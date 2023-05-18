@@ -66,6 +66,16 @@ html, body {
   right: 0;
 }
 
+.flex-x {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-y {
+  display: flex;
+  align-items: center;
+}
+
 .grid-collection {
   padding: 40px 20px;
 }
