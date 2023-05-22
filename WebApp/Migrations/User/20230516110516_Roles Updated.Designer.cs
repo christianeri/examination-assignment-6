@@ -11,7 +11,7 @@ using WebApp.Contexts;
 
 namespace WebApp.Migrations.User
 {
-    [DbContext(typeof(UserContext))]
+    [DbContext(typeof(IdentityContext))]
     [Migration("20230516110516_Roles Updated")]
     partial class RolesUpdated
     {

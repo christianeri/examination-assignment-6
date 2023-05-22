@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Models\Entities\UserEntity.cs" />
     <Compile Remove="Services\UserProfileService.cs" />
   </ItemGroup>
 
@@ -16,8 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Contexts\DB\" />
-    <Folder Include="Repositories\forUserContext\" />
     <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\img\productimages\" />
   </ItemGroup>
@@ -35,7 +32,6 @@
     <None Include="Views\Partials\_TopSelling.cshtml" />
     <None Include="Views\Partials\_UpToSell.cshtml" />
     <None Include="Views\Products\Index.cshtml" />
-    <None Include="Views\Products\Search.cshtml" />
     <None Include="wwwroot\js\site.js" />
   </ItemGroup>
 

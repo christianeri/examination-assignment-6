@@ -11,7 +11,7 @@ using WebApp.Contexts;
 
 namespace WebApp.Migrations.User
 {
-    [DbContext(typeof(UserContext))]
+    [DbContext(typeof(IdentityContext))]
     [Migration("20230515130454_Seed Admin Role")]
     partial class SeedAdminRole
     {

@@ -9,6 +9,10 @@ namespace WebApp.Models.Entities
         public string City { get; set; } = null!;
 
 
-        public ICollection<UserAddressEntity> Users { get; set; } = new HashSet<UserAddressEntity>();   
+        public ICollection<UserAddressEntity> Users { get; set; } = new HashSet<UserAddressEntity>();
+
+
+
+        //public ICollection<UserEntity> Users { get; set; } = new HashSet<UserAddressEntity>(); //4m9W1a0T6SU   
     }
 }

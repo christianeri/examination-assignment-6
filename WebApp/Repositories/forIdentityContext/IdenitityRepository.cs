@@ -2,15 +2,15 @@
 using System.Linq.Expressions;
 using WebApp.Contexts;
 
-namespace WebApp.Repositories
+namespace WebApp.Repositories.forUserContext
 {
     //www.youtube.com/watch?v=yGpybKyQlHo 02:29
-    public abstract class Repository<TEntity> where TEntity : class
+    public abstract class IdenitityRepository<TEntity> where TEntity : class
     {
 
 
-        private readonly UserContext _userContext;
-        protected Repository(UserContext userContext)
+        private readonly IdentityContext _userContext;
+        protected IdenitityRepository(IdentityContext userContext)
         {
             _userContext = userContext;
         }
@@ -33,9 +33,9 @@ namespace WebApp.Repositories
         public virtual async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> expression)
         {
             var entity = await _userContext.Set<TEntity>().FirstOrDefaultAsync(expression);
-            if(entity != null)
+            if (entity != null)
                 return entity;
-            
+
             return null;
         }
 
@@ -53,7 +53,7 @@ namespace WebApp.Repositories
         //filter using $expression
         public virtual async Task<IEnumerable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> expression)
         {
-            return await _userContext.Set<TEntity>().Where(expression).ToListAsync();  
+            return await _userContext.Set<TEntity>().Where(expression).ToListAsync();
         }
 
 

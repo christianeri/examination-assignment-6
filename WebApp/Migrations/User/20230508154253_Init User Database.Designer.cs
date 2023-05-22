@@ -11,7 +11,7 @@ using WebApp.Contexts;
 
 namespace WebApp.Migrations.User
 {
-    [DbContext(typeof(UserContext))]
+    [DbContext(typeof(IdentityContext))]
     [Migration("20230508154253_Init User Database")]
     partial class InitUserDatabase
     {

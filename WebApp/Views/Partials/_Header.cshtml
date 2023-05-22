@@ -11,7 +11,7 @@
 
             <nav class="menu-icons">
 
-                @if (signInManager.IsSignedIn(User)/* && User.IsInRole("administrator")*/)
+                @if (signInManager.IsSignedIn(User) && User.IsInRole("administrator"))
                 {
                     <a class="link" asp-controller="admin" asp-action="index">ADMIN</a>
                 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using WebApp.Services;
 using WebApp.ViewModels;
 
@@ -33,7 +34,7 @@ namespace WebApp.Controllers
 
 
 
-        public async Task<IActionResult> Filter(int[] selectedTags)
+        public async Task<IActionResult> Filtered(int[] selectedTags)
         {
             var model = new SelectedProductsViewModel
             {
@@ -60,7 +61,7 @@ namespace WebApp.Controllers
 
 
 
-
+        //[Authorize]
         public async Task<IActionResult> Register()
         {
             ViewBag.Tags = await _tagService.GetTagsAsync();
@@ -74,12 +75,12 @@ namespace WebApp.Controllers
             {
                 //if (await _productService.CreateProductAsync(model))
                 var productDto = await _productService.CreateProductAsync(model);
-                if (productDto != null) 
+                if (productDto != null)
                 {
                     await _productService.AddProductTagsAsync(model, selectedTags);
 
-                    if(model.Image != null) {await _productService.UploadImageAsync(productDto, model.Image!);}
-                    
+                    if (model.Image != null) { await _productService.UploadImageAsync(productDto, model.Image!); }
+
                     return RedirectToAction("register", "products");
                 }
                 ModelState.AddModelError("", "Something went wrong when creating product");

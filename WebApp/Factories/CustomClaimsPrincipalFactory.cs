@@ -35,6 +35,11 @@ namespace WebApp.Factories
             new Claim("ImageUrl", user.ImageUrl.ToString())
              });
 
+            var roles = await UserManager.GetRolesAsync(user);
+            foreach (var role in roles)
+            {
+                claimsIdentity.AddClaim(new Claim(role, role.ToString()));
+            }
 
             return claimsIdentity;
         }

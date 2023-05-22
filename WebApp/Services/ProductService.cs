@@ -1,7 +1,4 @@
-﻿using Azure;
-using System.Linq;
-using System.Collections.Generic;
-using WebApp.Models.Dtos;
+﻿using WebApp.Models.Dtos;
 using WebApp.Models.Entities;
 using WebApp.Repositories.forDataContext;
 
@@ -10,13 +7,6 @@ namespace WebApp.Services
     public class ProductService
     {
 
-
-        //private readonly DataContext _context;
-        //public ProductService(DataContext context)
-        //{
-        //    _context = context;
-        //}
-        //
 
         private readonly ProductRepository _productRepo;
         private readonly ProductTagRepository _productTagRepo;
@@ -60,9 +50,6 @@ namespace WebApp.Services
 
 
 
-
-
-
         public async Task<IEnumerable<ProductDto>> GetSelectedProductsAsync(int[]? selectedTags)
         {
 
@@ -85,30 +72,7 @@ namespace WebApp.Services
             }
                        
             return productDtos;
-
-
-            //var items = await _productRepo.GetAllAsync();
-            //var list = new List<ProductDto>();
-            //foreach (var item in items)
-            //{
-            //    list.Add(item);
-            //}
-            //return list;
         } 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

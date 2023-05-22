@@ -10,7 +10,7 @@ using WebApp.Contexts;
 
 namespace WebApp.Migrations.User
 {
-    [DbContext(typeof(UserContext))]
+    [DbContext(typeof(IdentityContext))]
     partial class UserContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

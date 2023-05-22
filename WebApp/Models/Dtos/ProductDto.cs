@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using WebApp.Models.Entities;
+﻿using WebApp.Models.Entities;
 
 namespace WebApp.Models.Dtos
 {
