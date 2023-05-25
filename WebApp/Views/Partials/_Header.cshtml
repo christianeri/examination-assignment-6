@@ -11,7 +11,7 @@
 
             <nav class="menu-icons">
 
-                @if (signInManager.IsSignedIn(User) && User.IsInRole("administrator"))
+                @if (signInManager.IsSignedIn(User) && User.IsInRole("Administrator"))
                 {
                     <a class="link" asp-controller="admin" asp-action="index">ADMIN</a>
                 }
@@ -19,7 +19,7 @@
                 @if (signInManager.IsSignedIn(User))
                 {
                         <a class="link" href="#"><i class="fa-regular fa-search"></i></a>
-                        <a class="link user-name" asp-controller="account" asp-action="index">@(User.FindFirst("DisplayName")?.Value)</a>
+                    <a class="link user-name" asp-controller="account" asp-action="index">@User.Identity.Name</a>
                         <a class="link" asp-controller="signout" asp-action="index">Sign out</a>
                 }
                 else

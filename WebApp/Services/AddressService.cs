@@ -1,5 +1,5 @@
 ﻿using WebApp.Models.Entities;
-using WebApp.Models.Identity;
+//using WebApp.Models.Identity;
 using WebApp.Repositories.forUserContext;
 
 namespace WebApp.Services
@@ -36,7 +36,7 @@ namespace WebApp.Services
 
 
 
-        public async Task AddAddressAsync(AppUser user, AddressEntity addressEntity)
+        public async Task AddAddressAsync(/*AppUser*/UserEntity user, AddressEntity addressEntity)
         {
             await _userAddressRepo.AddAsync(new UserAddressEntity
             {

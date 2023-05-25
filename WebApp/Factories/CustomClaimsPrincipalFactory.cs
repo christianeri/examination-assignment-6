@@ -1,17 +1,18 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using System.Security.Claims;
-using WebApp.Models.Identity;
+using WebApp.Models.Entities;
+//using WebApp.Models.Identity;
 using WebApp.Services;
 
 namespace WebApp.Factories
 {
-    public class CustomClaimsPrincipalFactory : UserClaimsPrincipalFactory<AppUser>
+    public class CustomClaimsPrincipalFactory : UserClaimsPrincipalFactory</*AppUser*/UserEntity>
     {
 
 
-        private readonly UserManager<AppUser> _userManager;
-        public CustomClaimsPrincipalFactory(UserManager<AppUser> userManager, IOptions<IdentityOptions> optionsAccessor) : base(userManager, optionsAccessor)
+        private readonly UserManager</*AppUser*/UserEntity> _userManager;
+        public CustomClaimsPrincipalFactory(UserManager</*AppUser*/UserEntity> userManager, IOptions<IdentityOptions> optionsAccessor) : base(userManager, optionsAccessor)
         {
             _userManager = userManager;
         }
@@ -21,7 +22,7 @@ namespace WebApp.Factories
 
 
         //protected override async Task<ClaimsIdentity> GenerateClaimsAsync(AppUser user)
-        protected override async Task<ClaimsIdentity> GenerateClaimsAsync(AppUser user)
+        protected override async Task<ClaimsIdentity> GenerateClaimsAsync(/*AppUser*/UserEntity user)
         {
             var claimsIdentity = await base.GenerateClaimsAsync(user);
             //claimsIdentity.AddClaim(new Claim("DisplayName", $"{user.FirstName} {user.LastName}"));

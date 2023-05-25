@@ -8,6 +8,7 @@ namespace WebApp.Models.Entities
 
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
+        public string ImageUrl { get; set; } = string.Empty;
 
         //public int AddressId { get; set; }
         //public AddressEntity Address { get; set; } = null!;

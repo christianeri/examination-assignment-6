@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using WebApp.Models.Identity;
+using WebApp.Models.Entities;
+//using WebApp.Models.Identity;
 using WebApp.Services;
 
 namespace WebApp.Controllers
@@ -10,8 +11,8 @@ namespace WebApp.Controllers
     {
 
 
-        private readonly SignInManager<AppUser> _signInManager;
-        public SignOutController(SignInManager<AppUser> signInManager)
+        private readonly SignInManager</*AppUser*/UserEntity> _signInManager;
+        public SignOutController(SignInManager</*AppUser*/UserEntity> signInManager)
         {
             _signInManager = signInManager;
         }

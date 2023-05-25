@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 using WebApp.Models.Entities;
-using WebApp.Models.Identity;
+//using WebApp.Models.Identity;
 
 namespace WebApp.ViewModels
 {
@@ -64,10 +64,10 @@ namespace WebApp.ViewModels
 
 
 
-        public static implicit operator AppUser(SignUpViewModel model)
+        public static implicit operator /*AppUser*/UserEntity(SignUpViewModel model)
         {
 
-            return new AppUser
+            return new /*AppUser*/UserEntity
             {
                 UserName = model.Email,
                 FirstName = model.FirstName,

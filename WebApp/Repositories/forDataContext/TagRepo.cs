@@ -4,9 +4,9 @@ using WebApp.Repositories.forDataContext;
 
 namespace WebApp.Repositories.forDataContext
 {
-    public class TagRepository : DataRepository<TagEntity>
+    public class TagRepo : DataRepository<TagEntity>
     {
-        public TagRepository(DataContext dataContext) : base(dataContext)
+        public TagRepo(DataContext dataContext) : base(dataContext)
         {
         }
     }

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.Controllers
 {
-    public class AccountController : Controller
+    public class UsersController : Controller
     {
 
         [Authorize]

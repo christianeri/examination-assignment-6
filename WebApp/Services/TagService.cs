@@ -6,8 +6,8 @@ namespace WebApp.Services
     public class TagService
     {
 
-        private readonly TagRepository _tagRepo;
-        public TagService(TagRepository tagRepo)
+        private readonly TagRepo _tagRepo;
+        public TagService(TagRepo tagRepo)
         {
             _tagRepo = tagRepo;
         }

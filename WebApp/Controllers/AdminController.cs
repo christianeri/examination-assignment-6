@@ -2,7 +2,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebApp.Contexts;
-using WebApp.Models.Identity;
+using WebApp.Models.Entities;
+//using WebApp.Models.Identity;
 using WebApp.Services;
 using WebApp.ViewModels;
 
@@ -11,10 +12,10 @@ namespace WebApp.Controllers
     public class AdminController : Controller
     {
 
-        private readonly UserManager<AppUser> _userManager;
+        private readonly UserManager</*AppUser*/UserEntity> _userManager;
         //private readonly UserContext _userContext;
 
-        public AdminController(UserManager<AppUser> userManager)//, UserContext userContext)
+        public AdminController(UserManager</*AppUser*/UserEntity> userManager)//, UserContext userContext)
         {
             _userManager = userManager;
             //_userContext = userContext;
@@ -32,7 +33,7 @@ namespace WebApp.Controllers
 
 
         //www.youtube.com/watch?v=yGpybKyQlHo 03:24
-        [Authorize(Roles = "administrator")]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Index()
         {
             return View();
@@ -42,16 +43,16 @@ namespace WebApp.Controllers
 
 
 
-        public async Task<IActionResult> Users()
-        {
-            var usersX = _userManager.Users;
+        //public async Task<IActionResult> Users()
+        //{
+        //    var usersX = _userManager.Users;
 
-            var users = _userManager.Users.Select(c => new AllUsersViewModel()
-            {
-                UserName = c.UserName,
-                Email = c.Email,
-                Role = string.Join(",", _userManager.GetRolesAsync(c).Result.ToArray())
-            }).ToList();
+        //    var users = _userManager.Users.Select(c => new AllUsersViewModel()
+        //    {
+        //        UserName = c.UserName,
+        //        Email = c.Email,
+        //        Role = string.Join(",", _userManager.GetRolesAsync(c).Result.ToArray())
+        //    }).ToList();
 
 
             //List<string> usersRoles = new List<string>();
@@ -61,8 +62,8 @@ namespace WebApp.Controllers
             //    var usersRoles.Add(_userManager.GetRolesAsync(user));
             //}
             
-            return View(users);
-        }
+        //    return View(users);
+        //}
 
 
     }

@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WebApp.Models.Identity;
+//using WebApp.Models.Identity;
 
 namespace WebApp.Models.Entities
 {
@@ -8,7 +8,7 @@ namespace WebApp.Models.Entities
     public class UserAddressEntity
     {
         public string UserId { get; set; } = null!;
-        public AppUser User { get; set; } = null!;
+        public /*AppUser*/UserEntity User { get; set; } = null!;
         
         //4m9W1a0T6SU
         //public UserEntity User { get; set; } = null!; 

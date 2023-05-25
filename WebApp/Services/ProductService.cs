@@ -8,10 +8,10 @@ namespace WebApp.Services
     {
 
 
-        private readonly ProductRepository _productRepo;
-        private readonly ProductTagRepository _productTagRepo;
+        private readonly ProductRepo _productRepo;
+        private readonly ProductTagRepo _productTagRepo;
         private readonly IWebHostEnvironment _webHostEnv;
-        public ProductService(ProductRepository productRepo, ProductTagRepository productTagRepo, IWebHostEnvironment webHostEnv)
+        public ProductService(ProductRepo productRepo, ProductTagRepo productTagRepo, IWebHostEnvironment webHostEnv)
         {
             _productRepo = productRepo;
             _productTagRepo = productTagRepo;

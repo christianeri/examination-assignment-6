@@ -3,7 +3,7 @@ using WebApp.ViewModels;
 using WebApp.Contexts;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
-using WebApp.Models.Identity;
+//using WebApp.Models.Identity;
 using System.Linq.Expressions;
 using WebApp.Models.Entities;
 
@@ -13,12 +13,14 @@ namespace WebApp.Services
     {
 
 
-        private readonly UserManager<AppUser> _userManager;
-        private readonly SignInManager<AppUser> _signInManager;
+        //private readonly UserManager<AppUser> _userManager;
+        private readonly UserManager<UserEntity> _userManager;
+        //private readonly SignInManager<AppUser> _signInManager;        
+        private readonly SignInManager<UserEntity> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly AddressService _addressService;
 
-        public AuthenticationService(UserManager<AppUser> userManager, AddressService addressService, SignInManager<AppUser> signInManager, RoleManager<IdentityRole> roleManager)
+        public AuthenticationService(UserManager</*AppUser*/UserEntity> userManager, AddressService addressService, SignInManager</*AppUser*/UserEntity> signInManager, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _addressService = addressService;
@@ -32,7 +34,7 @@ namespace WebApp.Services
 
 
         //www.youtube.com/watch?v=yGpybKyQlHo 02:07
-        public async Task<bool> UserExitsAsync(Expression<Func<AppUser, bool>> expression)
+        public async Task<bool> UserExitsAsync(Expression<Func</*appUser,*/UserEntity, bool>> expression)
         {
             //return await _userManager.Users.AnyAsync(x => x.Email == model.Email);  
             return await _userManager.Users.AnyAsync(expression);  
@@ -41,40 +43,44 @@ namespace WebApp.Services
 
 
 
-
+        //www.youtube.com/watch?v=4m9W1a0T6SU 01:33
         //www.youtube.com/watch?v=fQTe81VSxj8 01:10
         public async Task<bool> SignUpAsync(SignUpViewModel model)
         {
-     
+            //AppUser appUser = model;
+            UserEntity userEntity = model;
+
+
+            #region obsolete
             //02:36
             //await _seedService.SeedRoles();
             //var roleName = "user";
             //02:40 ff 
             //if (!await _userManager.Users.AnyAsync())
             //    roleName = "admin";
+            #endregion
 
 
-            AppUser appUser = model;
             var roleName = "user";
-
             if(!await _roleManager.Roles.AnyAsync())
             {
                 await _roleManager.CreateAsync(new IdentityRole("administrator"));
                 await _roleManager.CreateAsync(new IdentityRole("user"));
             }
-
             if(!await _userManager.Users.AnyAsync())
                 roleName = "administrator";
+            
 
-            var result = await _userManager.CreateAsync(appUser, model.Password);
+
+            var result = await _userManager.CreateAsync(/*appUser,*/userEntity, model.Password);
             if(result.Succeeded)
             {
-                await _userManager.AddToRoleAsync(appUser, roleName);
+                await _userManager.AddToRoleAsync(/*appUser,*/userEntity, roleName);
 
                 var addressEntity = await _addressService.GetOrCreateAsync(model);
                 if(addressEntity != null)
                 {
-                    await _addressService.AddAddressAsync(appUser, addressEntity);
+                    await _addressService.AddAddressAsync(/*appUser,*/userEntity, addressEntity);
                     return true;
                 }
             }

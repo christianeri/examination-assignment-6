@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using WebApp.Models.Entities;
-using WebApp.Models.Identity;
+//using WebApp.Models.Identity;
 
 namespace WebApp.Contexts
 {
@@ -11,7 +11,7 @@ namespace WebApp.Contexts
     public class IdentityContext: IdentityDbContext<UserEntity> //4m9W1a0T6SU
     {
 
-        public DbSet<AppUser> AppUsers { get; set; }
+        //public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<AddressEntity> AppAddresses { get; set; }
         public DbSet<UserAddressEntity> AppUserAddresses { get; set; }
         public IdentityContext(DbContextOptions<IdentityContext> options) : base(options)

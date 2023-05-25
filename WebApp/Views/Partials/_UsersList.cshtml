@@ -1,0 +1,27 @@
+﻿
+<div class="container">
+
+    <div class="row border py-2">
+        <div class="col">Username</div>
+        <div class="col">Name</div>
+        <div class="col">E-mail address</div>
+        <div class="col">User role</div>
+
+    </div>
+    @foreach (var user in await adminService.GetUsersAsync())
+    {
+        <div class="row border py-1">
+            <div class="col">@user.UserName</div>
+            <div class="col">
+                <span class="text-capitalize">@user.FirstName</span>
+                <span class="text-capitalize">@user.LastName</span>
+            </div>
+            <div class="col">@user.Email</div>
+            @foreach (var role in user.Roles)
+            {
+                <div class="col">@role</div>
+            }
+        </div>
+    }
+
+</div>
