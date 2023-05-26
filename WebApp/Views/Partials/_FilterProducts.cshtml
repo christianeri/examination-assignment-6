@@ -1,0 +1,27 @@
+﻿
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center border">
+        <div class="">
+            Categories:
+            @foreach (SelectListItem tag in ViewBag.Tags)
+            {
+                <!--//www.youtube.com/watch?v=YNKv02TK2xw 0:33-->
+                <a class="category-links" asp-action="filtered" name="culture" id="tag-@tag.Text-@tag.Value" value="@tag.Value">@tag.Text</a>
+            }
+        </div>
+        
+        <div>
+            <label for="cars">Tags</label>
+            <select id="cars" name="cars">
+                @foreach (SelectListItem tag in ViewBag.Tags)
+                {
+                    <option value="volvo">
+                        <a class="border-none" asp-action="filtered" name="culture" id="tag-@tag.Text-@tag.Value" value="@tag.Value">@tag.Text</a>
+                    </option>
+                    <!--//www.youtube.com/watch?v=YNKv02TK2xw 0:33-->
+                }
+            </select>
+        </div>
+
+    </div>
+</div>

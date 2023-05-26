@@ -1,0 +1,31 @@
+﻿@model SelectedProductsViewModel
+
+<div class="container border">
+    <div class="row pt-5 d-flex">
+        @foreach (var product in Model.Products)
+        {
+            <div class="col-3 border">
+
+                <a asp-controller="products" asp-action="details" asp-route-product="@product.ArticleNumber" class="collection-item">
+
+                    @if (@product.ImageUrl != null)
+                    {
+                        <img src="/img/productimages/@product.ImageUrl" alt="@product.Name">
+                    }
+                    else
+                    {
+                        <img src="/img/placeholders/270x295.svg" alt="@product.Name">
+                    }
+                    <div class="body">
+                        <div class="title">@product.Name</div>
+                        <div class="info">
+                            <div class="price">@product.Price</div>
+                            <i class="add-cart fa-regular fa-cart-plus"></i>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        }
+    </div>
+</div>

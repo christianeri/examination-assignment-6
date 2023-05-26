@@ -1,4 +1,6 @@
-﻿namespace WebApp.Models.Entities
+﻿using WebApp.Dtos;
+
+namespace WebApp.Models.Entities
 {
     public class ContactEntity
     {
@@ -13,9 +15,9 @@
 
 
 
-        public static implicit operator ContactModel(ContactEntity entity)
+        public static implicit operator /*ContactModel*/ContactDto(ContactEntity entity)
         {
-            return new ContactModel
+            return new /*ContactModel*/ContactDto
             {
                 Id = entity.Id,
                 Name = entity?.Name,

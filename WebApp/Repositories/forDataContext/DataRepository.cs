@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using System.Linq.Expressions;
 using WebApp.Contexts;
 
@@ -48,6 +49,10 @@ namespace WebApp.Repositories.forDataContext
         }
 
 
+        public virtual async Task<IEnumerable<TEntity>> GetAllAsync(int take)
+        {
+            return await _dataContext.Set<TEntity>().Take(take).ToListAsync();
+        }
 
 
         //filter using $expression

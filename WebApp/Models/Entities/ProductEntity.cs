@@ -7,18 +7,20 @@ namespace WebApp.Models.Entities
     public class ProductEntity
     {
         [Key]
-        public string ArticleNumber { get; set; }
+        public string ArticleNumber { get; set; } = null!;
 
         public string? ImageUrl { get; set; }
+
+        public string Brand { get; set; } = null!;
 
         public string Category { get; set; } = null!;
 
         public string Name { get; set; } = null!;
         
-        public string? Description { get; set; }
-
         [Column(TypeName = "money")]
-        public decimal Price { get; set; } 
+        public decimal Price { get; set; } = 0;
+
+        public string? Description { get; set; }
 
 
         public ICollection<ProductTagEntity> ProductTags { get; set; } = new HashSet<ProductTagEntity>();
@@ -47,6 +49,7 @@ namespace WebApp.Models.Entities
             {
                 ArticleNumber = entity.ArticleNumber,
                 ImageUrl = entity?.ImageUrl,
+                Brand = entity?.Brand,
                 Category = entity?.Category,
                 Name = entity?.Name,
                 Description = entity?.Description,

@@ -76,6 +76,20 @@ html, body {
   align-items: center;
 }
 
+.category-links {
+  color: #292929;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.25s;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+}
+.category-links:hover {
+  background-color: transparent;
+  color: #FA3150;
+}
+
 .grid-collection {
   padding: 40px 20px;
 }
@@ -317,8 +331,6 @@ html, body {
   background-color: #FFFFFF;
   text-decoration: none;
   display: block;
-  max-width: 300px;
-  max-height: 400px;
 }
 .collection-item img {
   width: 100%;
@@ -327,7 +339,7 @@ html, body {
 .collection-item .body {
   color: #292929;
   font-family: "Poppins", sans-serif;
-  padding: 10px;
+  padding: 10px 0px 10px 0;
 }
 .collection-item .body .title {
   grid-area: title;

@@ -31,6 +31,17 @@ namespace WebApp.Services
                 list.Add(item);
             }
             return list;
+        }          
+        
+        public async Task<IEnumerable<ProductDto>> GetAllProductsAsync(int take)
+        {
+            var items = await _productRepo.GetAllAsync(take);
+            var list = new List<ProductDto>();
+            foreach (var item in items) 
+            {
+                list.Add(item);
+            }
+            return list;
         }         
         
         
@@ -126,42 +137,5 @@ namespace WebApp.Services
                 return false;
             }
         }
-
-
-        #region obsolete
-        /*
-        public async Task<bool> CreateProductAsync(RegisterProductViewModel registerProductViewModel)
-        {
-            try
-            {
-                ProductEntity productEntity = registerProductViewModel;
-                _context.Products.Add(productEntity);
-                await _context.SaveChangesAsync();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-
-
-
-        public async Task<IEnumerable<ProductModel>> GetAllProductsAsync()
-        {
-            var products = new List<ProductModel>();    
-            var items = await _context.Products.ToListAsync();
-
-            foreach (var item in items)
-            {
-                ProductModel productModel = item;
-                products.Add(productModel);
-            }
-            
-            return products;
-        }
-        */
-        #endregion
     }
 }

@@ -4,10 +4,12 @@ namespace WebApp.Models.Dtos
 {
     public class ProductDto
     {
-        public string ArticleNumber { get; set; }
+        public string ArticleNumber { get; set; } = null!;
 
         public string? ImageUrl { get; set; }
 
+        public string Brand { get; set; } = null!;
+        
         public string Category { get; set; } = null!;
 
         public string Name { get; set; } = null!;

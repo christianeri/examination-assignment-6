@@ -13,7 +13,11 @@ namespace WebApp.ViewModels
         
         [Required(ErrorMessage = "Product category is required")]
         [Display(Name = "Product Category *")]
-        public string Category { get; set; } = null!;
+        public string Category { get; set; } = null!;        
+        
+        [Required(ErrorMessage = "Product brand is required")]
+        [Display(Name = "Brand *")]
+        public string Brand { get; set; } = null!;
         
 
         [Required(ErrorMessage = "Product name is required")]
@@ -43,6 +47,7 @@ namespace WebApp.ViewModels
             var productEntity = new ProductEntity
             {
                 ArticleNumber = model.ArticleNumber,
+                Brand = model.Brand,
                 Category = model.Category,
                 Name = model.Name,
                 Description = model.Description,
