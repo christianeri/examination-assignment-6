@@ -9,49 +9,7 @@
 
 <partial name="/Views/Partials/_Breadcrumb.cshtml" />
 
-<div class="container flex-x flex-y border">
-    <div><strong>
-        Filter Products
-    </strong></div>
+<partial name="/Views/Partials/_FilterProducts.cshtml" />
+<partial name="/Views/Partials/_ProductsGrid.cshtml" />
 
-    <form enctype="multipart/form-data" method="post" asp-action="Filtered" novalidate class="d-flex align-items-center">
 
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        @foreach (SelectListItem tag in ViewBag.Tags)
-        {
-            <!--//www.youtube.com/watch?v=YNKv02TK2xw 0:33-->
-            <div class="form-check">
-                <input type="checkbox" name="selectedTags" id="tag-@tag.Text-@tag.Value" value="@tag.Value" checked="@tag.Selected" class="form-check-input mx-2">
-                <label for="tag-@tag.Text-@tag.Value" class="form-check-label pt-1">@tag.Text</label>
-            </div>
-        }
-        <div class="px-4">
-            <button class="btn btn-secondary my-2" style="height:35px">FILTER</button>
-        </div>
-
-    </form>
-</div>
-
-<div class="pt-5 container">
-    @foreach(var product in Model.Products)
-    {
-        <a asp-controller="products" asp-action="details" asp-route-product="@product.ArticleNumber" class="collection-item">
-
-            @if (@product.ImageUrl != null)
-            {
-                <img src="/img/productimages/@product.ImageUrl" alt="@product.Name">
-            }
-            else
-            {
-                <img src="/img/placeholders/270x295.svg" alt="@product.Name">
-            }
-            <div class="body">
-                <div class="title">@product.Name</div>
-                <div class="info">
-                    <div class="price">@product.Price</div>
-                    <i class="add-cart fa-regular fa-cart-plus"></i>
-                </div>
-            </div>
-        </a>
-    }
-</div>

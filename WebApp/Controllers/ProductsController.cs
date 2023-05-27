@@ -53,7 +53,8 @@ namespace WebApp.Controllers
         {
             var model = new ProductDetailsViewModel
             {
-                ProductItem = await _productService.GetProductAsync(product)
+                ProductItem = await _productService.GetProductAsync(product),
+                AssociatedTags = await _tagService.GetTagsAsync(product)
             };
 
             return View(model);

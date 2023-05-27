@@ -1,4 +1,4 @@
-.collection-item {
+﻿.collection-item {
     background-color: $color-white;
     text-decoration: none;
     display: block;
@@ -16,6 +16,13 @@
         .title {
             grid-area: title;
             font-size: 18px;
+            font-family: $font-poppins;
+            font-weight: $font-weight-medium;
+        }
+
+        .category {
+            grid-area: title;
+            font-size: 12px;
             font-family: $font-poppins;
             font-weight: $font-weight-medium;
         }
@@ -41,7 +48,7 @@
                 padding: 2px;
                 font-size: 24px;
                 color: $color-dark-2;
-    
+
                 &:hover {
                     color: $color-dark-4;
                 }

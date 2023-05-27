@@ -3,7 +3,7 @@
 
 <section class="product-details">
     <div class="container">
-        <div class="row">
+        <div class="row mt-4">
 
 
             <div class="col-sm" id="main-top-left">
@@ -29,26 +29,30 @@
             </div>
 
 
-            <div class="col-sm pt-3 right" id="main-top-right">
+            <div class="col-sm right" id="main-top-right">
                 <div>
                     <h3>@Model.ProductItem.Name</h3>
-                    <p class="py-2">
+
+                        <span class="col-8">Brand: @Model.ProductItem.Brand</span>
+                        <span class="col-4 text-align-right"">(Article Number: @Model.ProductItem.ArticleNumber)</span>
+         
+                    <p class="pt-2">
                         @Model.ProductItem.Description
                     </p>
-                    <span>
-                        <span>Article Number: @Model.ProductItem.ArticleNumber</span><span class="px-3">TAGS: @Model.ProductItem.ProductTags</span>
-                    </span>
-                    <div class="card-rating py-3" id="product-rating">
+                        
+                    <div class="product-rating pb-4">
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                     </div>
-                    <h3 class="card-price">€@Model.ProductItem.Price</h3>
+                    <h3 class="product-price pb-3">SEK @Model.ProductItem.Price</h3>
 
                 </div>
                 <div class="">
+
+                    <!--
                     <div class="d-flex my-4">
                         <div class="left">Size:</div>
                         <div class="d-flex gap-2 g-0">
@@ -64,8 +68,9 @@
                             <div class="color-value">Choose an Option</div>
                         </div>
                     </div>
+                    -->
 
-                    <div class="d-flex mt-3">
+                    <div class="d-flex my-4">
                         <div class="item-counter">
                             <button class="counter-box">-</button>
                             <div class="counter-box">X</div>
@@ -74,7 +79,13 @@
                         <button class="mx-3 btn-theme">Add to Cart</button>
                         <div class=""></div>
                     </div>
-
+                    <span>
+                        TAGS:
+                        @foreach (var tag in @Model.AssociatedTags)
+                        {
+                            <span>@tag.Text</span>
+                        }
+                    </span>
                     <!--
                     <div class="row my-4">
                         <div class="left">Share:</div>

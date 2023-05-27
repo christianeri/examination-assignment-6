@@ -1,5 +1,6 @@
 ﻿.product-details {
     position: relative;
+    font-family: $font-poppins;
 
     h4 {
         margin: 0;
@@ -8,11 +9,23 @@
 
     p {
         color: $color-dark-3;
+        text-align: justify;
         margin-right: 1rem;
     }
 
     .left {
         width: 60px;
+    }
+
+    .product-rating {
+        font-size: 20px;
+        color: #ffd800;
+    }
+
+    .product-price {
+        font-size: 24px;
+        font-weight: $font-weight-bold;
+        color: $color-dark-0;
     }
 
     .item-counter {

@@ -1,6 +1,9 @@
 .breadcrumb {
     height: 200px;
     background-color: $color-dark-5;
+    margin-bottom: 0px;
+    position: static;
+    z-index: 1;
 
     @include md {
         height: 300px;
@@ -11,7 +14,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-
     }
 
     .content {

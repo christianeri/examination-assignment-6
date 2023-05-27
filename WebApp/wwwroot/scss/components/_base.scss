@@ -1,3 +1,4 @@
+//fix
 .qq {
     border-style: solid;
     border-width: 1px;
@@ -72,18 +73,3 @@ html, body {
     align-items: center;
 }
 
-.category-links {
-    color: $color-dark-2;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: all 0.25s;
-    font-size: 16px;
-    font-weight: $font-weight-semibold;
-    font-family: $font-poppins;
-
-
-    &:hover {
-        background-color: transparent;
-        color: $color-theme-1;
-    }
-}
