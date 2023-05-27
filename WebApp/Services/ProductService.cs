@@ -89,7 +89,6 @@ namespace WebApp.Services
 
 
 
-        //public async Task<bool> CreateProductAsync(ProductEntity entity)
         public async Task<ProductDto> CreateProductAsync(ProductEntity entity)
         {
             var _entity = await _productRepo.GetAsync(x => x.ArticleNumber == entity.ArticleNumber);
@@ -97,10 +96,8 @@ namespace WebApp.Services
             {
                 _entity = await _productRepo.AddAsync(entity);
                 if(entity != null)
-                    //return true;
                     return _entity;
             }
-            //return false;
             return null;
         }        
         

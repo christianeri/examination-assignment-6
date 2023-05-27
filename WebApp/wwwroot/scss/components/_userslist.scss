@@ -1,0 +1,15 @@
+﻿.users-list {
+    font-family: $font-poppins;
+
+    .container {
+        .list-description {
+            font-weight: $font-weight-bold;
+            color: $color-dark-2;
+            text-decoration: upper-case;
+        }
+
+        a {
+            text-align: right;
+        }
+    }
+}

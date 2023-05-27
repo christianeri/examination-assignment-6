@@ -45,12 +45,7 @@ namespace WebApp.Services
             {
                 requestedTags.Add(tags.TagId);
             }
-
             var associatedTags = new List<SelectListItem>();
-            //foreach (var tagId in requestedTags)
-            //{
-
-            //}
 
             foreach (var tag in await _tagRepo.GetAllAsync())
             {
@@ -64,27 +59,7 @@ namespace WebApp.Services
             return associatedTags;
 
         }
-        
 
-      
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         public async Task<List<SelectListItem>> GetTagsAsync(string[] selectedTags)
         {

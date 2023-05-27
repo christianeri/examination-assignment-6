@@ -50,7 +50,7 @@ builder.Services.AddIdentity<UserEntity, IdentityRole>(x =>
 builder.Services.AddScoped<AuthenticationService>();
 //builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<AddressService>();
-builder.Services.AddScoped<AdministratorService>();
+builder.Services.AddScoped<UserService>();
 
 
 

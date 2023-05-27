@@ -75,7 +75,6 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                //if (await _productService.CreateProductAsync(model))
                 var productDto = await _productService.CreateProductAsync(model);
                 if (productDto != null)
                 {

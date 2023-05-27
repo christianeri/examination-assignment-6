@@ -364,7 +364,7 @@ html, body {
 .filter-products {
   font-family: "Poppins", sans-serif;
 }
-.filter-products .category-links {
+.filter-products .tags {
   color: #292929;
   text-decoration: none;
   text-transform: capitalize;
@@ -373,9 +373,13 @@ html, body {
   font-weight: 600;
   font-family: "Poppins", sans-serif;
 }
-.filter-products .category-links:hover {
+.filter-products .tags:hover {
   background-color: transparent;
   color: #FA3150;
+}
+.filter-products .tags a:visited {
+  color: #292929;
+  text-decoration: none;
 }
 
 footer {
@@ -1235,4 +1239,16 @@ header .toggle {
 .user-profile .container .right {
   flex: 1;
   min-width: 100px;
+}
+
+.users-list {
+  font-family: "Poppins", sans-serif;
+}
+.users-list .container .list-description {
+  font-weight: 700;
+  color: #292929;
+  text-decoration: upper-case;
+}
+.users-list .container a {
+  text-align: right;
 }
