@@ -19,7 +19,7 @@
                 @if (signInManager.IsSignedIn(User))
                 {
                         <a class="link" href="#"><i class="fa-regular fa-search"></i></a>
-                    <a class="link user-name" asp-controller="user" asp-action="index">@User.Identity.Name</a>
+                        <a class="link user-name" asp-controller="users" asp-route-selectedUser="@User.Identity.Name" asp-action="details">@User.Identity.Name</a>
                         <a class="link" asp-controller="signout" asp-action="index">Sign out</a>
                 }
                 else

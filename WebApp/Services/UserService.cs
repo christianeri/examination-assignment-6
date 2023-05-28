@@ -66,6 +66,24 @@ namespace WebApp.Services
                 Roles = role.ToList()
             };
             return userDto;
+        }        
+        
+        public async Task<UserDto> GetUserByUserNameAsync(string selectedUser)
+        {
+            var userEntity = await _userManager.FindByEmailAsync(selectedUser);
+            var role = await _userManager.GetRolesAsync(userEntity);
+
+            var userDto = new UserDto
+            {
+                Id = userEntity.Id,
+                UserName = userEntity.UserName,
+                FirstName = userEntity.FirstName,
+                LastName = userEntity.LastName,
+                ImageUrl = userEntity.ImageUrl,
+                Email = userEntity.Email,
+                Roles = role.ToList()
+            };
+            return userDto;
         }
 
 

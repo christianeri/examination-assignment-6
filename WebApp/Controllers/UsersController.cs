@@ -25,9 +25,13 @@ namespace WebApp.Controllers
 
 
         [Authorize]
-        public IActionResult Index()
+        public async Task<IActionResult> Details(string selectedUser)
         {
-            return View();
+            var model = new UserViewModel
+            {
+                UserItem = await _userService.GetUserByUserNameAsync(selectedUser),
+            };
+            return View(model);
         }        
         
         
@@ -59,13 +63,11 @@ namespace WebApp.Controllers
 
 
 
-
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Update(UserRoleDto entity)
         {
             await _userService.UpdateUserRoleAsync(entity);
-            //return View();
-
 
             return RedirectToAction("index", "");
         }

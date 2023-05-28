@@ -1,20 +1,19 @@
-﻿
-<section class="user-profile">
-    <div class="container qq">
+﻿@model UserViewModel
 
-            <div class="left content-image qq">
-                <img src="@(User.FindFirst("ImageUrl")?.Value)">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col">
+                <div class="row">Id</div>
+                <div class="row">First name</div>
+                <div class="row">Last name</div>
+                <div class="row">E-mail address</div>
+            </div>                
+                
+            <div class="col">
+                <div class="row">@Model.UserItem.Id</div>
+                <div class="row">@Model.UserItem.FirstName</div>
+                <div class="row">@Model.UserItem.LastName</div>
+                <div class="row">@Model.UserItem.Email</div>
             </div>
-            <div class="right qq">
-                <div>@(User.FindFirst("DisplayName")?.Value)</div>
-                <div>@(User.FindFirst("FirstName")?.Value)</div>
-                <div>@(User.FindFirst("LastName")?.Value)</div>
-                <div>@(User.FindFirst("Email")?.Value)</div>
-                <div>@(User.FindFirst("PhoneNumber")?.Value)</div>
-                <div>@(User.FindFirst("StreetName")?.Value)</div>
-                <div>@(User.FindFirst("PostalCode")?.Value)</div>
-                <div>@(User.FindFirst("City")?.Value)</div>
-            </div>
-
+        </div>
     </div>
-</section>
