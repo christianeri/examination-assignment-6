@@ -127,6 +127,7 @@ namespace WebApp.Services
                 productDto.BrandId = _entity.BrandId;
                 productDto.Description = _entity.Description;
                 productDto.ImageUrl = _entity.ImageUrl;
+                productDto.Name = _entity.Name;
                 productDto.Price = _entity.Price;
                 return productDto;
             }
