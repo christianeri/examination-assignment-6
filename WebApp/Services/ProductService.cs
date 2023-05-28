@@ -1,6 +1,4 @@
-﻿using Azure;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using WebApp.Models.Dtos;
+﻿using WebApp.Models.Dtos;
 using WebApp.Models.Entities;
 using WebApp.Repositories.forDataContext;
 
@@ -37,13 +35,6 @@ namespace WebApp.Services
             return null;
         }        
         
-        //public async Task<List<SelectListItem>> GetBrandIdAsync(string selectedBrands)
-        //{
-
-        //}
-
-
-
 
         //här
         public async Task<IEnumerable<ProductDto>> GetAllProductsAsync()
@@ -137,8 +128,10 @@ namespace WebApp.Services
                 productDto.Description = _entity.Description;
                 productDto.ImageUrl = _entity.ImageUrl;
                 productDto.Price = _entity.Price;
+                return productDto;
             }
             return null;
+
         }
 
 

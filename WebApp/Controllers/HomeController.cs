@@ -29,6 +29,7 @@ namespace WebApp.Controllers
                     Products = await _productService.GetAllProductsAsync(8)
                 }
             };
+            ViewBag.Tags = await _tagService.GetTagsAsync();
 
             return View(viewModel);
         }

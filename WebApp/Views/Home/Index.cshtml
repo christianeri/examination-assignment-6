@@ -1,12 +1,15 @@
 ﻿@model HomeIndexViewModel
 
 @{
-    ViewData["Title"] = Model.Title;
+    ViewData["Heading"] = Model.Heading;
 }
 
 
 <partial name="/Views/Partials/_Showcase.cshtml"/>
 
+<div class="container mt-5 flex-x collection-title"><h1>@ViewData["Heading"]</h1></div>
+
+<partial name="/Views/Partials/_ProductsFilter.cshtml" />
 <partial name="/Views/Partials/_ProductsGrid.cshtml" model="@Model.BestCollection" />
 
 <partial name="/Views/Partials/_UpToSell.cshtml" />
