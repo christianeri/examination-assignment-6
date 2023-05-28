@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using WebApp.Migrations.User;
 using WebApp.Models.Dtos;
 using WebApp.Models.Entities;
+using WebApp.Repositories.forDataContext;
 using WebApp.Repositories.forIdentityContext;
 
 namespace WebApp.Services
@@ -10,11 +13,11 @@ namespace WebApp.Services
     {
 
         private readonly UserManager<UserEntity> _userManager;
-        //private readonly UserRoleRepo _userRoleRepo;
-        public UserService(UserManager<UserEntity> userManager/*, UserRoleRepo userRoleRepo*/)
+        private readonly RoleManager<IdentityRole> _roleManager;
+        public UserService(UserManager<UserEntity> userManager, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
-            //_userRoleRepo = userRoleRepo;
+            _roleManager = roleManager;
         }
 
 
@@ -70,11 +73,25 @@ namespace WebApp.Services
 
         public async Task UpdateUserRoleAsync(UserRoleDto entity)
         {
-            var result = await _userManager.FindByIdAsync(entity.UserId);
-            if (result != null)
+
+            var roles = new List<SelectListItem>();
+            foreach (var role in await _roleManager.Roles.ToListAsync())
             {
-                await _userManager.RemoveFromRoleAsync(result, entity.RoleName);
-                await _userManager.AddToRoleAsync(result, entity.RoleName);
+                roles.Add(new SelectListItem
+                {
+                    Value = role.Id,
+                    Text = role.Name
+                });
+            }
+            //string role;
+            var currentRole = roles.FirstOrDefault(x => x.Text != entity.SelectedRoleName);
+            string normalized = currentRole.Text.ToUpper();
+
+            var user = await _userManager.FindByIdAsync(entity.UserId);
+            if (user != null)
+            {
+                var resultRemove = await _userManager.RemoveFromRoleAsync(user, normalized);
+                var resultAdd = await _userManager.AddToRoleAsync(user, entity.SelectedRoleName);
             }
 
         }

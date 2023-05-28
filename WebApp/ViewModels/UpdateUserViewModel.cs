@@ -16,9 +16,8 @@ namespace WebApp.ViewModels
 
         public string UserId { get; set; }
         public string RoleId { get; set; }
-        public string RoleName { get; set; }
-
-        public string selectedRole { get; set; }
+        public string CurrentRoleName { get; set; }
+        public string SelectedRoleName { get; set; }
 
 
 
@@ -28,8 +27,9 @@ namespace WebApp.ViewModels
             {
                 UserId = model.UserItem.Id,
                 RoleId = model.RoleId,
-                RoleName = model.RoleName,
+                CurrentRoleName = model.CurrentRoleName,
+                SelectedRoleName = model.SelectedRoleName
             };
-        }
+        }        
     }
 }

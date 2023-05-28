@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using System.Data;
 using WebApp.Models.Dtos;
 using WebApp.Services;
 using WebApp.ViewModels;
@@ -64,11 +63,11 @@ namespace WebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Update(UserRoleDto entity)
         {
-            //await _userService.UpdateUserRoleAsync(entity);
+            await _userService.UpdateUserRoleAsync(entity);
             //return View();
 
 
-            return View();
+            return RedirectToAction("index", "");
         }
     }
 }
