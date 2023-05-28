@@ -6,51 +6,5 @@
 }
 
 <partial name="/Views/Partials/_Breadcrumb.cshtml" />
-
-
-<section class="form-theme">
-    <div class="container">
-        <form class="contact-form" method="post" novalidate>
-
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-            <div class="name form-group">
-                <label asp-for="Name" class="form-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger" rows="4"></span></small>
-            </div>
-
-            <div class="email form-group">
-                <label asp-for="Email" class="form-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger" rows="4"></span></small>
-            </div>
-
-            <div class="phoneNumber form-group">
-                <label asp-for="PhoneNumber" class="form-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" />
-                <span asp-validation-for="PhoneNumber" class="text-danger" rows="4"></span></small>
-            </div>
-
-            <div class="organizationName form-group">
-                <label asp-for="Organization" class="form-label"></label>
-                <input asp-for="Organization" class="form-control" />
-                <span asp-validation-for="Organization" class="text-danger" rows="4"></span></small>
-            </div>
-
-            <div class="message form-group">
-                <label asp-for="Message" class="form-label"></label>
-                <textarea asp-for="Message" class="form-control"></textarea>
-                <span asp-validation-for="Message" class="error"></span></small>
-            </div>
-
-
-            <button class="btn-theme">Submit</button>
-
-
-        </form>
-    </div>
-</section>
-
-
+<partial name="/Views/Partials/_ContactForm.cshtml" />
 <partial name="/Views/Partials/_GoogleMaps.cshtml" />

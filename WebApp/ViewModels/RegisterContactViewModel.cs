@@ -5,26 +5,27 @@ namespace WebApp.ViewModels
 {
     public class RegisterContactViewModel
     {
-
+        [Required(ErrorMessage = "Name is required")]
         [Display(Name = "Name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
 
+        [Required(ErrorMessage = "Email is required")]
         [Display(Name = "Email Address")]
-        public string? Email { get; set; }           
+        public string Email { get; set; } = string.Empty;          
         
         
-        [Display(Name = "Phone Number")]
-        public string? PhoneNumber { get; set; }        
+        [Display(Name = "Phone Number (optional)")]
+        public string PhoneNumber { get; set; }        
         
 
         [Display(Name = "Organization (optional)")]
-        public string? Organization { get; set; }
+        public string Organization { get; set; }
 
 
         [Required(ErrorMessage = "Message is required")]
         [Display(Name = "Message")]
-        public string? Message { get; set; }
+        public string Message { get; set; } = string.Empty;
 
 
 

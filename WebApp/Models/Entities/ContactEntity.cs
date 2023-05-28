@@ -9,22 +9,22 @@ namespace WebApp.Models.Entities
         public string Email { get; set; } = string.Empty;
         public string PhoneNumber { get; set; }
         public string Organization { get; set; }
-        public string Message { get; set; }
+        public string Message { get; set; } = string.Empty;
 
 
 
 
 
-        public static implicit operator /*ContactModel*/ContactDto(ContactEntity entity)
+        public static implicit operator ContactDto(ContactEntity entity)
         {
-            return new /*ContactModel*/ContactDto
+            return new ContactDto
             {
                 Id = entity.Id,
-                Name = entity?.Name,
-                Email = entity?.Email,
-                PhoneNumber = entity?.PhoneNumber,
-                Organization = entity?.Organization,
-                Message = entity?.Message
+                Name = entity.Name,
+                Email = entity.Email,
+                PhoneNumber = entity.PhoneNumber,
+                Organization = entity.Organization,
+                Message = entity.Message
             };
         }
     }

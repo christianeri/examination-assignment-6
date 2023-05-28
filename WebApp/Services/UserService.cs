@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using WebApp.Models.Dtos;
 using WebApp.Models.Entities;
+using WebApp.Repositories.forIdentityContext;
 
 namespace WebApp.Services
 {
@@ -9,9 +10,11 @@ namespace WebApp.Services
     {
 
         private readonly UserManager<UserEntity> _userManager;
-        public UserService(UserManager<UserEntity> userManager)
+        //private readonly UserRoleRepo _userRoleRepo;
+        public UserService(UserManager<UserEntity> userManager/*, UserRoleRepo userRoleRepo*/)
         {
             _userManager = userManager;
+            //_userRoleRepo = userRoleRepo;
         }
 
 
@@ -61,5 +64,26 @@ namespace WebApp.Services
             };
             return userDto;
         }
+
+
+
+
+        public async Task UpdateUserRoleAsync(UserRoleDto entity)
+        {
+            var result = await _userManager.FindByIdAsync(entity.UserId);
+            if (result != null)
+            {
+                await _userManager.RemoveFromRoleAsync(result, entity.RoleName);
+                await _userManager.AddToRoleAsync(result, entity.RoleName);
+            }
+
+        }
+
+
+        //public async Task<UserRoleEntity> UpdateUserRoleAsync(UserRoleEntity entity)
+        //{
+        //    var result = await _userRoleRepo.UpdateAsync(entity);
+        //    return result;
+        //}
     }
 }

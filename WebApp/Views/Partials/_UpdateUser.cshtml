@@ -1,0 +1,57 @@
+﻿@model UpdateUserViewModel
+
+
+
+<div class="users-list mt-5">
+
+    <div class="container pt-5">
+        <div class="users-list-users">
+            <div class="users-list-description row py-2 g-0">
+                <div class="col-3"></div>
+                <div class="col-4"></div>
+                <div class="col-3"></div>
+                <div class="col-1" style="padding-left: 16px">Edit Role</div>
+                <div class="col-1"></div>
+            </div>
+
+            <form class="row" method="post" asp-action="update" novalidate>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input asp-for="UserId" class="d-none" value="@Model.UserItem.Id" />
+                <div class="row g-0">
+                    <div class="col-3">
+                        <input class="form-control" value="@Model.UserItem.UserName" />
+                    </div>
+                    <div class="col-2">
+                        <input asp-for="FirstName" class="form-control" value="@Model.UserItem.FirstName" />
+                    </div>
+                    <div class="col-2">
+                        <input asp-for="LastName" class="form-control" value="@Model.UserItem.LastName" />
+                    </div>
+                    <div class="col-3">
+                        <input asp-for="Email" class="form-control" value="@Model.UserItem.Email" />
+                    </div>
+
+                    <div class="col-2">
+                        @foreach (SelectListItem role in ViewBag.AllRoles)
+                        {
+                            <!--//www.youtube.com/watch?v=YNKv02TK2xw 0:33-->
+
+                            <div class="d-flex mx-2">
+                                <div class="radio-button-box">
+                                    <input class="radio-button" type="radio" asp-for="RoleName" id="role-@role.Text-@role.Value" value="@role.Text" checked="">
+                                </div>
+                                <label class="" for="role-@role.Text-@role.Value">@role.Text</label>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="row g-0">
+                    <div class="col-11"></div>
+                    <div class="col-1 py-3">
+                        <button class="btn btn-secondary d-grid">UPDATE</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

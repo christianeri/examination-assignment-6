@@ -1,29 +1,31 @@
 ﻿<div class="users-list">
     <div class="container">
 
-        <div class="list-description row py-3 g-0">
-            <div class="col-3">Username</div>
-            <div class="col-4">Name</div>
-            <div class="col-3">E-mail address</div>
-            <div class="col-1">User role</div>
-            <div class="col-1"></div>
-        </div>
-        @foreach (var user in await userService.GetUsersAsync())
-        {
-            <div class="row py-1 g-0">
-                <div class="col-3">@user.UserName</div>
-                <div class="col-4">
-                    <span class="text-capitalize">@user.FirstName</span>
-                    <span class="text-capitalize">@user.LastName</span>
-                </div>
-                <div class="col-3">@user.Email</div>
-                @foreach (var role in user.Roles)
-                {
-                    <div class="col-1">@role</div>
-                }
-                <a class="col-1" asp-controller="users" asp-action="edit" asp-route-selectedUser="@user.Id" class="collection-item">Edit</a>
-
+        <div class="users-list-users">
+            <div class="users-list-description row py-3 g-0">
+                <div class="col-3">Username</div>
+                <div class="col-4">Name</div>
+                <div class="col-3">E-mail address</div>
+                <div class="col-1">User role</div>
+                <div class="col-1"></div>
             </div>
-        }
+            @foreach (var user in await userService.GetUsersAsync())
+            {
+                <div class="row py-1 g-0">
+                    <div class="col-3">@user.UserName</div>
+                    <div class="col-4">
+                        <span class="text-capitalize">@user.FirstName</span>
+                        <span class="text-capitalize">@user.LastName</span>
+                    </div>
+                    <div class="col-3">@user.Email</div>
+                    @foreach (var role in user.Roles)
+                    {
+                        <div class="col-1">@role</div>
+                    }
+                    <a class="col-1" asp-controller="users" asp-action="edit" asp-route-selectedUser="@user.Id" class="collection-item">Edit</a>
+
+                </div>
+            }
+        </div>
     </div>
 </div>

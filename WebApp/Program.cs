@@ -5,7 +5,7 @@ using WebApp.Factories;
 using WebApp.Models.Entities;
 //using WebApp.Models.Identity;
 using WebApp.Repositories.forDataContext;
-using WebApp.Repositories.forUserContext;
+using WebApp.Repositories.forIdentityContext;
 using WebApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -76,11 +76,14 @@ builder.Services.AddScoped<ShowcaseService>();
 builder.Services.AddScoped<ContactService>();
 builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<TagService>();
+builder.Services.AddScoped<UserService>();
 
 
 builder.Services.AddScoped<TagRepo>();
+builder.Services.AddScoped<BrandRepo>();
 builder.Services.AddScoped<ProductRepo>();
 builder.Services.AddScoped<ProductTagRepo>();
+//builder.Services.AddScoped<UserRoleRepo>();
 
 
 

@@ -3,7 +3,7 @@ using WebApp.Models.Entities;
 
 namespace WebApp.ViewModels
 {
-    public class AddProductViewModel
+    public class RegisterProductViewModel
     {
 
         [Required(ErrorMessage = "ArticleNumber is required")]
@@ -11,13 +11,14 @@ namespace WebApp.ViewModels
         public string ArticleNumber { get; set; } = null!;        
         
         
-        [Required(ErrorMessage = "Product category is required")]
-        [Display(Name = "Product Category *")]
-        public string Category { get; set; } = null!;        
+        //[Required(ErrorMessage = "Product category is required")]
+        //[Display(Name = "Product Category *")]
+        //public string Category { get; set; } = null!;        
         
         [Required(ErrorMessage = "Product brand is required")]
         [Display(Name = "Brand *")]
-        public string Brand { get; set; } = null!;
+        public string BrandName { get; set; } = null!;        
+        public int BrandId { get; set; }
         
 
         [Required(ErrorMessage = "Product name is required")]
@@ -42,22 +43,29 @@ namespace WebApp.ViewModels
 
 
 
-        public static implicit operator ProductEntity(AddProductViewModel model)
+        public static implicit operator ProductEntity(RegisterProductViewModel model)
         {
             var productEntity = new ProductEntity
             {
                 ArticleNumber = model.ArticleNumber,
-                Brand = model.Brand,
-                Category = model.Category,
+                BrandId = model.BrandId,
                 Name = model.Name,
                 Description = model.Description,
                 Price = model.Price
             };
-
             if (model.Image != null)
                 productEntity.ImageUrl = $"{model.ArticleNumber}_{model.Image?.FileName}";
 
             return productEntity;
+        }
+
+        public static implicit operator BrandEntity(RegisterProductViewModel model)
+        {
+            var brandEntity = new BrandEntity
+            {
+                BrandName = model.BrandName
+            };
+            return brandEntity;
         }
     }
 }

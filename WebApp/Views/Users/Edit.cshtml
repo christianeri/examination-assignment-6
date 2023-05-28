@@ -1,12 +1,11 @@
-﻿@model UserDetailsViewModel
-
+﻿
 @{
     ViewData["Page"] = "Manage Users";
     ViewData["Function"] = "Edit User";
 
     if (signInManager.IsSignedIn(User))
     {
-        ViewData["Title"] = "ADMINISTRATION";
+        ViewData["Title"] = @User.Identity.Name;
     }
     else
     {
@@ -15,44 +14,15 @@
 }
 
 <partial name="/Views/Partials/_Breadcrumb.cshtml" />
+<partial name="/Views/Partials/_AdminNavbar.cshtml" />
 <partial name="/Views/Partials/_UsersList.cshtml" />
+<hr/>
+<partial name="/Views/Partials/_UpdateUser.cshtml" />
 
 
 
 
-<div class="container">
-    <div class="row g-0 py-5">
-        <div class="col-3">            
-            <input asp-for="@Model.UserItem.UserName" class="form-control" />
-        </div>
-        
-        
-        <div class="col-4 d-flex">
-            <input asp-for="@Model.UserItem.FirstName" class="form-control"/>
-            <input asp-for="@Model.UserItem.LastName" class="form-control"/>
-        </div>        
-        
-        <div class="col-3">
-            <input asp-for="@Model.UserItem.Email" class="form-control"/>
-        </div>        
-        
-        <div class="col-2">
 
-            <select id="categories" name="tags">
-                @foreach (SelectListItem role in ViewBag.AllRoles)
-                {
-                    <option value="@role.Value">
-                        <a class="border-none" asp-controller="products" asp-action="filtered" asp-route-selectedTags="@role.Value">@role.Text</a>
-                        <!--//www.youtube.com/watch?v=YNKv02TK2xw 0:33-->
-                    </option>
-                }
-            </select>
-
-        </div>
-
-
-    </div>
-</div>
 
 
 

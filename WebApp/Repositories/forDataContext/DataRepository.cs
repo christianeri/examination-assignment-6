@@ -76,8 +76,6 @@ namespace WebApp.Repositories.forDataContext
 
 
 
-
-
         public virtual async Task<TEntity> UpdateAsync(TEntity entity)
         {
             _dataContext.Set<TEntity>().Update(entity);

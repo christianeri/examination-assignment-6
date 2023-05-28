@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
+using WebApp.Models.Dtos;
 using WebApp.Services;
 using WebApp.ViewModels;
 
@@ -47,11 +49,26 @@ namespace WebApp.Controllers
             }
             ViewBag.AllRoles = roles;
             
-            var model = new UserDetailsViewModel
+            var model = new UpdateUserViewModel
             {
                 UserItem = await _userService.GetUserAsync(selectedUser),
             };
             return View(model);
+        }
+
+
+
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> Update(UserRoleDto entity)
+        {
+            //await _userService.UpdateUserRoleAsync(entity);
+            //return View();
+
+
+            return View();
         }
     }
 }

@@ -260,6 +260,16 @@ html, body {
   border-radius: 10px;
 }
 
+.radio-button {
+  width: 20px;
+  height: 20px;
+}
+
+.radio-button-box {
+  height: 25px;
+  width: 25px;
+}
+
 .collection-content {
   background-color: #FFFFFF;
   text-decoration: none;
@@ -359,27 +369,6 @@ html, body {
     display: flex;
     justify-self: flex-start;
   }
-}
-
-.filter-products {
-  font-family: "Poppins", sans-serif;
-}
-.filter-products .tags {
-  color: #292929;
-  text-decoration: none;
-  text-transform: capitalize;
-  transition: all 0.25s;
-  font-size: 16px;
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
-}
-.filter-products .tags:hover {
-  background-color: transparent;
-  color: #FA3150;
-}
-.filter-products .tags a:visited {
-  color: #292929;
-  text-decoration: none;
 }
 
 footer {
@@ -820,6 +809,27 @@ header .toggle {
   transition: 0.2s;
 }
 
+.filter-products {
+  font-family: "Poppins", sans-serif;
+}
+.filter-products .tags {
+  color: #292929;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: all 0.25s;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+}
+.filter-products .tags:hover {
+  background-color: transparent;
+  color: #FA3150;
+}
+.filter-products .tags a:visited {
+  color: #292929;
+  text-decoration: none;
+}
+
 .collection-item {
   background-color: #FFFFFF;
   text-decoration: none;
@@ -1242,13 +1252,29 @@ header .toggle {
 }
 
 .users-list {
+  position: relative;
+  top: -50px;
   font-family: "Poppins", sans-serif;
 }
-.users-list .container .list-description {
+.users-list .container .users-list-users {
+  padding-left: 15px;
+}
+.users-list .container .users-list-description {
   font-weight: 700;
   color: #292929;
   text-decoration: upper-case;
 }
 .users-list .container a {
   text-align: right;
+}
+
+.users-list-users {
+  padding-left: 15px;
+}
+
+.users-list-description {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  color: #292929;
+  text-decoration: upper-case;
 }

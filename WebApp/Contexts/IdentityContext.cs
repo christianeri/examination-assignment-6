@@ -12,6 +12,7 @@ namespace WebApp.Contexts
 
         public DbSet<AddressEntity> AppAddresses { get; set; }
         public DbSet<UserAddressEntity> AppUserAddresses { get; set; }
+
         public IdentityContext(DbContextOptions<IdentityContext> options) : base(options)
         {
         }

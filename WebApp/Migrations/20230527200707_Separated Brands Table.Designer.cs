@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApp.Contexts;
 
@@ -10,9 +11,11 @@ using WebApp.Contexts;
 namespace WebApp.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230527200707_Separated Brands Table")]
+    partial class SeparatedBrandsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -112,8 +115,18 @@ namespace WebApp.Migrations
                     b.Property<string>("ArticleNumber")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("Brand")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("BrandId")
                         .HasColumnType("int");
+
+                    b.Property<string>("BrandName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -137,6 +150,7 @@ namespace WebApp.Migrations
                         {
                             ArticleNumber = "A11",
                             BrandId = 1,
+                            Category = "Audio",
                             Description = "Med Andersson BHS 3.3 får du en kompakt och portabel högtalare med snygga detaljer och LED-ljus. Du kan enkelt ta samtal direkt ur högtalaren med handsfree-funktionen. Koppla din mobil till högtalaren via Bluetooth och börja lyssna!  ",
                             ImageUrl = "pexels-mwabonje-12562635.jpg",
                             Name = "BHS 3.3",
@@ -146,6 +160,7 @@ namespace WebApp.Migrations
                         {
                             ArticleNumber = "A22",
                             BrandId = 1,
+                            Category = "Audio",
                             Description = "De trådlösa hörlurarna är robusta och bekväma, med vadderad huvudbygel och mjuka öronkuddar, och kan utan problem användas flera timmar i sträck.",
                             ImageUrl = "pexels-sound-on-3761020.jpg",
                             Name = "T570 BT",
@@ -155,6 +170,7 @@ namespace WebApp.Migrations
                         {
                             ArticleNumber = "A33",
                             BrandId = 2,
+                            Category = "Home",
                             Description = "Weber Master-Touch® GBS E-5750 är kolgrillen som förenar den traditionella grillkänslan med nya innovativa funktioner kombinerat med en rejäl dos bekvämlighet. Med det medföljande Gourmet BBQ System-grillgallret kan du laga frukost, tillaga ett långkok eller en frasig pizza ute i det fria. Årets Master-Touch har förbättrad ventilation som gör att du nu kan grilla och röka i en och samma grill, Tuck-Away lockhållare och One-Touch rengöringssystem som gör kolgrillning till vardags så mycket bekvämare.",
                             ImageUrl = "pexels-min-an-1171585.jpg",
                             Name = "Master-Touch® GBS E-5750",
@@ -164,6 +180,7 @@ namespace WebApp.Migrations
                         {
                             ArticleNumber = "A44",
                             BrandId = 3,
+                            Category = "Home",
                             Description = "D9 Max från Dreame är en kraftfull robotdammsugare med 4000 Pa i sugkapacitet och en borstlös gummiborste för att säkerställa att allt damm och smuts rensas bort från dina golv!",
                             ImageUrl = "pexels-jens-mahnke-844874.jpg",
                             Name = "D9 Max",
@@ -173,6 +190,7 @@ namespace WebApp.Migrations
                         {
                             ArticleNumber = "A55",
                             BrandId = 4,
+                            Category = "Home",
                             Description = "Beurer BM 28 är en helautomatisk blodtrycksmätare för överarmen. Den visar systoliskt och diastoliskt tryck samt puls.",
                             ImageUrl = "pexels-mikhail-nilov-8670204.jpg",
                             Name = "BM 28",
@@ -182,6 +200,7 @@ namespace WebApp.Migrations
                         {
                             ArticleNumber = "A66",
                             BrandId = 5,
+                            Category = "Shoes",
                             Description = "Klassiska enlagers-kängor som passar för dig som rör dig i skogen, på leden eller i stan. Utformade med ovandel i Heinen Terracare-skinn och med vattentät, cellgummibotten med Certech 2.0-konstruktion som är både lätt och flexibel. Lundhags Wayfinder-yttersula är tillverkad i mjukt 60 ShA-gummimaterial och ger utmärkt grepp.",
                             ImageUrl = "pexels-aidan-jarrett-718981.jpg",
                             Name = "U Park",
@@ -191,6 +210,7 @@ namespace WebApp.Migrations
                         {
                             ArticleNumber = "A77",
                             BrandId = 6,
+                            Category = "Shoes",
                             Description = "Stabila löparskor med bekväm dämpning, för dig som springer längre pass. Skorna har en specialutformad ovandel i mesh som är ventilerande och som omsluter foten med en mjuk känsla. FlyteFoam-mellansulan ger lätt stötdämpning under löpningen och GEL-teknologin i hälen skapar mjukare landningar och smidigare övergångar.",
                             ImageUrl = "pexels-melvin-buezo-2529148.jpg",
                             Name = "W Gt-1000",
@@ -200,6 +220,7 @@ namespace WebApp.Migrations
                         {
                             ArticleNumber = "A88",
                             BrandId = 5,
+                            Category = "Shoes",
                             Description = "Sandaler med stötdämpande och elastisk naturkorksfotbädd som är fuktavvisande. Sandalerna ger även bra mellanfotsstöd och har djup hälkopp för optimal stabilitet.",
                             ImageUrl = "pexels-mike-bird-112285.jpg",
                             Name = "U Comfort Sandal",
@@ -209,6 +230,7 @@ namespace WebApp.Migrations
                         {
                             ArticleNumber = "A99",
                             BrandId = 7,
+                            Category = "Outdoor",
                             Description = "Handgjort ansiktsskägg är lämplig för utomhusaktiviteter, överlevnad, alla typer jakt och fiske, så rolig och fantastisk. Dra åt snabbt, lossa eller ta bort skägget med knappfästen, så att ditt ansikte alltid blir varmt och skyddat.",
                             ImageUrl = "tactical-beard-brown.png",
                             Name = "Taktiskt skägg",

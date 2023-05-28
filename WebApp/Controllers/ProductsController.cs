@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
+using WebApp.Models.Entities;
 using WebApp.Services;
 using WebApp.ViewModels;
 
@@ -49,12 +49,14 @@ namespace WebApp.Controllers
         
         
         
-        public async Task<IActionResult> Details(string product)
+        public async Task<IActionResult> Details(string articleNumber)
         {
+            var product = await _productService.GetProductAsync(articleNumber);
+            
             var model = new ProductDetailsViewModel
             {
-                ProductItem = await _productService.GetProductAsync(product),
-                AssociatedTags = await _tagService.GetTagsAsync(product)
+                ProductItem = product,
+                AssociatedTags = await _tagService.GetTagsAsync(articleNumber),
             };
 
             return View(model);
@@ -63,7 +65,7 @@ namespace WebApp.Controllers
 
 
 
-        //[Authorize]
+        [Authorize]
         public async Task<IActionResult> Register()
         {
             ViewBag.Tags = await _tagService.GetTagsAsync();
@@ -71,13 +73,20 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(AddProductViewModel model, string[] selectedTags)
+        public async Task<IActionResult> Register(RegisterProductViewModel model, BrandEntity brandEntity, string[] selectedTags)
         {
             if (ModelState.IsValid)
             {
+                var brandId = await _productService.AddBrandAsync(brandEntity);
+                if(brandId != 0)
+                {
+                    model.BrandId = brandId;
+                }
+                
                 var productDto = await _productService.CreateProductAsync(model);
                 if (productDto != null)
                 {
+
                     await _productService.AddProductTagsAsync(model, selectedTags);
 
                     if (model.Image != null) { await _productService.UploadImageAsync(productDto, model.Image!); }

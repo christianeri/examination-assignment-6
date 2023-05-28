@@ -12,10 +12,7 @@ namespace WebApp.Services
     public class AuthenticationService
     {
 
-
-        //private readonly UserManager<AppUser> _userManager;
         private readonly UserManager<UserEntity> _userManager;
-        //private readonly SignInManager<AppUser> _signInManager;        
         private readonly SignInManager<UserEntity> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly AddressService _addressService;
@@ -50,15 +47,6 @@ namespace WebApp.Services
             //AppUser appUser = model;
             UserEntity userEntity = model;
 
-
-            #region obsolete
-            //02:36
-            //await _seedService.SeedRoles();
-            //var roleName = "user";
-            //02:40 ff 
-            //if (!await _userManager.Users.AnyAsync())
-            //    roleName = "admin";
-            #endregion
 
 
             var roleName = "user";

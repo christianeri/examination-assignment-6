@@ -2,17 +2,17 @@
 using System.Linq.Expressions;
 using WebApp.Contexts;
 
-namespace WebApp.Repositories.forUserContext
+namespace WebApp.Repositories.forIdentityContext
 {
     //www.youtube.com/watch?v=yGpybKyQlHo 02:29
     public abstract class IdenitityRepository<TEntity> where TEntity : class
     {
 
 
-        private readonly IdentityContext _userContext;
-        protected IdenitityRepository(IdentityContext userContext)
+        private readonly IdentityContext _identityContext;
+        protected IdenitityRepository(IdentityContext identityContext)
         {
-            _userContext = userContext;
+            _identityContext = identityContext;
         }
 
 
@@ -21,8 +21,8 @@ namespace WebApp.Repositories.forUserContext
 
         public virtual async Task<TEntity> AddAsync(TEntity entity)
         {
-            _userContext.Set<TEntity>().Add(entity);
-            await _userContext.SaveChangesAsync();
+            _identityContext.Set<TEntity>().Add(entity);
+            await _identityContext.SaveChangesAsync();
             return entity;
         }
 
@@ -32,7 +32,7 @@ namespace WebApp.Repositories.forUserContext
 
         public virtual async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> expression)
         {
-            var entity = await _userContext.Set<TEntity>().FirstOrDefaultAsync(expression);
+            var entity = await _identityContext.Set<TEntity>().FirstOrDefaultAsync(expression);
             if (entity != null)
                 return entity;
 
@@ -44,7 +44,7 @@ namespace WebApp.Repositories.forUserContext
 
         public virtual async Task<IEnumerable<TEntity>> GetAllAsync()
         {
-            return await _userContext.Set<TEntity>().ToListAsync();
+            return await _identityContext.Set<TEntity>().ToListAsync();
         }
 
 
@@ -53,7 +53,7 @@ namespace WebApp.Repositories.forUserContext
         //filter using $expression
         public virtual async Task<IEnumerable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> expression)
         {
-            return await _userContext.Set<TEntity>().Where(expression).ToListAsync();
+            return await _identityContext.Set<TEntity>().Where(expression).ToListAsync();
         }
 
 
@@ -62,8 +62,8 @@ namespace WebApp.Repositories.forUserContext
 
         public virtual async Task<TEntity> UpdateAsync(TEntity entity)
         {
-            _userContext.Set<TEntity>().Update(entity);
-            await _userContext.SaveChangesAsync();
+            _identityContext.Set<TEntity>().Update(entity);
+            await _identityContext.SaveChangesAsync();
             return entity;
         }
 
@@ -75,8 +75,8 @@ namespace WebApp.Repositories.forUserContext
         {
             try
             {
-                _userContext.Set<TEntity>().Remove(entity);
-                await _userContext.SaveChangesAsync();
+                _identityContext.Set<TEntity>().Remove(entity);
+                await _identityContext.SaveChangesAsync();
                 return true;
             }
             catch

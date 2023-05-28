@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using WebApp.Models.Entities;
+﻿using WebApp.Models.Entities;
 
 namespace WebApp.ViewModels
 {

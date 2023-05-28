@@ -1,7 +1,7 @@
 ﻿using WebApp.Contexts;
 using WebApp.Models.Entities;
 
-namespace WebApp.Repositories.forUserContext
+namespace WebApp.Repositories.forIdentityContext
 {
     public class UserAddressRepository : IdenitityRepository<UserAddressEntity>
     {

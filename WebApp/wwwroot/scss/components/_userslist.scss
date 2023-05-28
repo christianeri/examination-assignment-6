@@ -1,15 +1,37 @@
 ﻿.users-list {
+    position: relative;
+    top: -50px;
     font-family: $font-poppins;
 
     .container {
-        .list-description {
+
+        .users-list-users {
+            padding-left: 15px;
+            
+        }
+
+        .users-list-description {
             font-weight: $font-weight-bold;
             color: $color-dark-2;
             text-decoration: upper-case;
-        }
+        }        
+
 
         a {
             text-align: right;
         }
+        
     }
 }
+
+.users-list-users {
+    padding-left: 15px;
+}
+
+.users-list-description {
+    font-family: $font-poppins;
+    font-weight: $font-weight-bold;
+    color: $color-dark-2;
+    text-decoration: upper-case;
+}
+

@@ -9,38 +9,25 @@ namespace WebApp.Models.Entities
         [Key]
         public string ArticleNumber { get; set; } = null!;
 
+        public int BrandId { get; set; }
+
+        //public int CategoryId { get; set; }
+        //public string CategoryName { get; set; } = null!;
+
+        public string? Description { get; set; }
+
         public string? ImageUrl { get; set; }
-
-        public string Brand { get; set; } = null!;
-
-        public string Category { get; set; } = null!;
 
         public string Name { get; set; } = null!;
         
         [Column(TypeName = "money")]
         public decimal Price { get; set; } = 0;
 
-        public string? Description { get; set; }
-
 
         public ICollection<ProductTagEntity> ProductTags { get; set; } = new HashSet<ProductTagEntity>();
 
+ 
 
-
-
-
-        //public static implicit operator ProductModel(ProductEntity entity)
-        //{
-        //    return new ProductModel
-        //    {
-        //        ArticleNumber = entity.ArticleNumber,
-        //        ImageUrl = entity?.ImageUrl,
-        //        Category = entity?.Category,
-        //        Name = entity?.Name,
-        //        Description = entity?.Description,
-        //        Price = entity?.Price
-        //    };
-        //}        
 
 
         public static implicit operator ProductDto(ProductEntity entity)
@@ -48,11 +35,11 @@ namespace WebApp.Models.Entities
             return new ProductDto
             {
                 ArticleNumber = entity.ArticleNumber,
-                ImageUrl = entity?.ImageUrl,
-                Brand = entity?.Brand,
-                Category = entity?.Category,
-                Name = entity?.Name,
+                BrandId = entity.BrandId,
+                //CategoryId = entity.CategoryId,
                 Description = entity?.Description,
+                ImageUrl = entity?.ImageUrl,
+                Name = entity.Name,
                 Price = entity.Price
             };
         }

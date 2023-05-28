@@ -3,9 +3,9 @@ using WebApp.Models.Entities;
 
 namespace WebApp.Repositories.forDataContext
 {
-    public class ProductRepo : DataRepository<ProductEntity>
+    public class BrandRepo : DataRepository<BrandEntity>
     {
-        public ProductRepo(DataContext dataContext) : base(dataContext)
+        public BrandRepo(DataContext dataContext) : base(dataContext)
         {
         }
     }
