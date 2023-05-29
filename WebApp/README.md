@@ -33,5 +33,5 @@ För väl godkänt krävs följande:
 - Du måste minst ha 8 olika Partial Views. ✔
 - Du måste kunna lägga till nya användare i backoffice-systemet.
 - Du måste implementera så att det går att byta användarroll för en specifik användare.	✔
-- Du måste implementera så att en användare kan se sin egna profilsida. ✔
+- Du måste implementera så att en användare kan se sin egna profilsida. 
 - Du måste implementera så att det går att lägga till nya produkter i backoffice-systemet.
